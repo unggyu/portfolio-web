@@ -14,6 +14,17 @@ export type Technology = {
   name: string
 }
 
+export type ResumeBasicInfo = {
+  description_header: string
+  description: string
+  section_name: {
+    about: string
+    projects: string
+    skills: string
+    experience: string
+  }
+}
+
 export type ProjectData = {
   title: string
   startDate: string
@@ -32,16 +43,7 @@ export type Experience = {
 }
 
 export type ResumeData = {
-  basic_info: {
-    description_header: string
-    description: string
-    section_name: {
-      about: string
-      projects: string
-      skills: string
-      experience: string
-    }
-  }
+  basic_info: ResumeBasicInfo
   projects: ProjectData[]
   experience: Experience[]
 }
@@ -58,13 +60,15 @@ export type Icon = {
   level: string
 }
 
+export type SharedBasicInfo = {
+  name: string
+  titles: string[]
+  social: Social[]
+  image: string
+}
+
 export type SharedData = {
-  basic_info: {
-    name: string
-    titles: string[]
-    social: Social[]
-    image: string
-  }
+  basic_info: SharedBasicInfo
   skills: {
     icons: Icon[]
   }

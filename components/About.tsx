@@ -2,11 +2,11 @@ import { Icon } from '@iconify/react'
 import angularIcon from '@iconify/icons-logos/angular-icon'
 import reactIcon from '@iconify/icons-logos/react';
 import vueIcon from '@iconify/icons-logos/vue';
-import { ResumeData, SharedData } from '../interfaces'
+import { ResumeBasicInfo, SharedBasicInfo } from '../interfaces'
 
 type Props = {
-    resumeBasicInfo?: ResumeData['basic_info']
-    sharedBasicInfo?: SharedData['basic_info']
+    resumeBasicInfo?: ResumeBasicInfo
+    sharedBasicInfo?: SharedBasicInfo
 }
 
 const About = ({ resumeBasicInfo, sharedBasicInfo }: Props) => {
