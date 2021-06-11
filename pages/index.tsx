@@ -45,8 +45,8 @@ const IndexPage = ({ sharedData, resumeData }: Props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <link rel="manifest" href="manifest.json" />
-        <link rel="stylesheet" href="//cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css" />
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="devicon.min.css" />
+        <link rel="stylesheet" href="all.css" />
       </Head>
       <Github username="unggyu" />
       <div>
