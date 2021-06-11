@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react'
+// client
 import { GetStaticProps } from 'next'
-import axios from 'axios'
-import Header from '../components/Header'
+import Head from 'next/head'
 import { ResumeData, SharedData } from '../interfaces'
-import { getResumeData, getSharedData } from '../utils/datas'
+import Header from '../components/Header'
 import About from '../components/About'
+import Github from '../components/Github'
+
+// server
+import { getResumeData, getSharedData } from '../utils/repository'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   try {
@@ -25,110 +28,34 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-type Language = {
-  name: string,
-  iconId: string
-}
-
 type Props = {
   sharedData?: SharedData
   resumeData?: ResumeData
   errors?: string
 }
 
-const IndexPage = (props: Props) => {
-  const [resumeData, setResumeData] = useState<ResumeData>(props.resumeData)
-  const [sharedData, setSharedData] = useState<SharedData>(props.sharedData)
-  const [primaryLanguage, setPrimaryLanguage] = useState<Language>({
-    name: 'en',
-    iconId: 'primary-lang-icon'
-  })
-  const [secondaryLanguage, setSecondaryLanguage] = useState<Language>({
-    name: 'pl',
-    iconId: 'secondary-lang-icon'
-  })
-
-  useEffect(() => {
-    console.log('sharedData: ' + sharedData)
-    applyPickedLanguage(
-      primaryLanguage.name,
-      secondaryLanguage.iconId
-    )
-  })
-
-  const loadResumeFromPath = async (path: string) => {
-    try {
-      const response = await axios.get<ResumeData>(path);
-      setResumeData(response.data)
-    } catch (err) {
-      alert(err)
-    }
-  }
-
-  const applyPickedLanguage = (pickedLanguage: string, oppositeLangIconId: string) => {
-    swapCurrentlyActiveLanguage(oppositeLangIconId)
-    document.documentElement.lang = pickedLanguage
-    const resumePath =
-      document.documentElement.lang === primaryLanguage.name ?
-        'res_primaryLanguage.json' :
-        'res_secondaryLanguage.json'
-    loadResumeFromPath(resumePath)
-  }
-
-  const swapCurrentlyActiveLanguage = (oppositeLangIconId: string) => {
-    const pickedLangIconId =
-      oppositeLangIconId === primaryLanguage.iconId ?
-        secondaryLanguage.iconId :
-        primaryLanguage.iconId
-
-    document
-      .getElementById(oppositeLangIconId)
-      .removeAttribute('filter')
-
-    document
-      .getElementById(pickedLangIconId)
-      .setAttribute('filter', 'brightness(40%)')
-  }
+const IndexPage = ({ sharedData, resumeData }: Props) => {
 
   return (
-    <div>
-      <Header sharedData={sharedData.basic_info} />
-      <div className="col-md-12 mx-auto text-center language">
-        <div
-          onClick={() => 
-            applyPickedLanguage(
-              primaryLanguage.name,
-              secondaryLanguage.iconId
-            )
-          }
-          style={{ display: 'inline' }}>
-          <span
-            className="iconify language-icon mr-5"
-            data-icon="twemoji-flag-for-united-kingdom"
-            data-inline="false"
-            id={primaryLanguage.iconId}>
-          </span>
-        </div>
-        <div
-          onClick={() =>
-            applyPickedLanguage(
-              secondaryLanguage.name,
-              primaryLanguage.iconId
-            )
-          }
-          style={{ display: 'inline' }}>
-          <span
-            className="iconify language-icon"
-            data-icon="twemoji-flag-for-flag-poland"
-            data-inline="false"
-            id={secondaryLanguage.iconId}>
-          </span>
-        </div>
+    <>
+      <Head>
+        <title>Unggyu-Choi | Front-end Developer</title>
+        <meta charSet="utf-8" />
+        <link rel="icon" href="favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="manifest" href="manifest.json" />
+        <link rel="stylesheet" href="//cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous" />
+      </Head>
+      <Github username="unggyu" />
+      <div>
+        <Header sharedData={sharedData.basic_info} />
+        <About
+          resumeBasicInfo={resumeData.basic_info}
+          sharedBasicInfo={sharedData.basic_info} />
       </div>
-      <About
-        resumeBasicInfo={resumeData.basic_info}
-        sharedBasicInfo={sharedData.basic_info} />
-    </div>
+    </>
   )
 }
 

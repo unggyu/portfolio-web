@@ -5,8 +5,7 @@
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc",
-    "debug": "node --inspect-brk ./node_modules/next/dist/bin/next"
+    "type-check": "tsc"
   },
   "dependencies": {
     "axios": "^0.21.1",

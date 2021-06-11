@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Typical from 'react-typical'
 import Switch from 'react-switch'
 import { SharedData } from '../interfaces'
@@ -9,7 +9,6 @@ type Props = {
 }
 
 const Header = ({ sharedData }: Props) => {
-    let windowInnerHeight: number
     const [checked, setChecked] = useState(false)
     const windowSize = useWindowSize()
 
@@ -20,7 +19,7 @@ const Header = ({ sharedData }: Props) => {
         body.setAttribute(dataThemeAttribute, newTheme)
     }
 
-    const onThemeSwitchChange = (checked) => {
+    const onThemeSwitchChange = (checked: boolean) => {
         setChecked(checked)
         setTheme()
     }
