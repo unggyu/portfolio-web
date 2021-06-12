@@ -13,7 +13,6 @@ class MyDocument extends Document {
         <body data-theme="light">
           <Main />
           <NextScript />
-          <script src="iconify.min.js"></script>
         </body>
       </Html>
     )

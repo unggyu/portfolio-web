@@ -2,13 +2,16 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { ResumeData, SharedData } from '../interfaces'
-import Header from '../components/Header'
-import About from '../components/About'
-import Github from '../components/Github'
+import {
+  Header,
+  About,
+  Github,
+  Projects,
+  Skills
+} from '../components'
 
 // server
 import { getResumeData, getSharedData } from '../utils/repository'
-import Projects from '../components/Projects'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   try {
@@ -46,7 +49,6 @@ const IndexPage = ({ sharedData, resumeData }: Props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <link rel="manifest" href="manifest.json" />
-        <link rel="stylesheet" href="devicon.min.css" />
         <link rel="stylesheet" href="all.css" />
       </Head>
       <Github username="unggyu" />
@@ -58,6 +60,10 @@ const IndexPage = ({ sharedData, resumeData }: Props) => {
         />
         <Projects
           resumeProjects={resumeData.projects}
+          resumeBasicInfo={resumeData.basic_info}
+        />
+        <Skills
+          sharedSkills={sharedData.skills}
           resumeBasicInfo={resumeData.basic_info}
         />
       </div>
