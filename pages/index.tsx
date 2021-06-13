@@ -58,6 +58,7 @@ const IndexPage = ({ sharedData, resumeData }: Props) => {
         <About
           resumeBasicInfo={resumeData.basic_info}
           sharedBasicInfo={sharedData.basic_info}
+          representativeSkills={sharedData.representative_skills}
         />
         <Projects
           resumeProjects={resumeData.projects}

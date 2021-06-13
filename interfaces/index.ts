@@ -71,5 +71,6 @@ export type SharedData = {
   basic_info: SharedBasicInfo
   skills: {
     icons: Icon[]
-  }
+  },
+  representative_skills: string[]
 }

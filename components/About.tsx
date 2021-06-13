@@ -4,9 +4,10 @@ import { ResumeBasicInfo, SharedBasicInfo } from '../interfaces'
 type Props = {
   resumeBasicInfo?: ResumeBasicInfo
   sharedBasicInfo?: SharedBasicInfo
+  representativeSkills?: string[]
 }
 
-const About = ({ resumeBasicInfo, sharedBasicInfo }: Props) => {
+const About = ({ resumeBasicInfo, sharedBasicInfo, representativeSkills }: Props) => {
   let profilePic: string
   let sectionName: string
   let hello: string
@@ -32,6 +33,7 @@ const About = ({ resumeBasicInfo, sharedBasicInfo }: Props) => {
           <div className="col-md-4 mb-5 center">
             <Polaroid
               imagePath={profilePic}
+              representativeSkills={representativeSkills}
               style={{
                 margin: '55px 75px 30px'
               }}

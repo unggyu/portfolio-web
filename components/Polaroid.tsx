@@ -1,36 +1,37 @@
 import { HTMLProps } from 'react'
 import { Icon } from '@iconify/react'
-import angularIcon from '@iconify/icons-logos/angular-icon'
-import reactIcon from '@iconify/icons-logos/react'
-import vueIcon from '@iconify/icons-logos/vue'
 import styles from './Polaroid.module.scss'
+import getLogoIcon from '../utils/icon'
 
 type Props = HTMLProps<HTMLElement> & {
   imagePath: string
+  representativeSkills?: string[]
 }
 
-const Polaroid = ({ imagePath, style }: Props) => (
-  <div className="polaroid" style={style}>
+const Polaroid = ({ imagePath, representativeSkills, style }: Props) => {
+  let icons: JSX.Element[]
+  if (representativeSkills) {
+    icons = representativeSkills.map((skill, i) => (
+      <Icon
+        key={i}
+        className={styles.icon}
+        icon={getLogoIcon(skill)}
+      />
+    ))
+  }
+
+  return (
+    <div className="polaroid" style={style}>
       <span style={{ cursor: 'auto' }}>
-          <img
-            height="250px"
-            src={imagePath}
-            alt="Avator placeholder"
-          />
-          <Icon
-            className={styles.icon}
-            icon={angularIcon}
-          />
-          <Icon
-            className={styles.icon}
-            icon={reactIcon}
-          />
-          <Icon
-            className={styles.icon}
-            icon={vueIcon}
-          />
+        <img
+          height="250px"
+          src={imagePath}
+          alt="Avator placeholder"
+        />
+        {icons}
       </span>
-  </div>
-)
+    </div>
+  )
+}
 
 export default Polaroid
