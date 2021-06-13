@@ -7,13 +7,15 @@ import {
   About,
   Github,
   Projects,
-  Skills
+  Skills,
+  Experience,
+  Footer
 } from '../components'
 
 // server
 import { getResumeData, getSharedData } from '../utils/repository'
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const sharedData = getSharedData()
     const resumeData = getResumeData()
@@ -66,6 +68,11 @@ const IndexPage = ({ sharedData, resumeData }: Props) => {
           sharedSkills={sharedData.skills}
           resumeBasicInfo={resumeData.basic_info}
         />
+        <Experience
+          resumeExperience={resumeData.experience}
+          resumeBasicInfo={resumeData.basic_info}
+        />
+        <Footer sharedBasicInfo={sharedData.basic_info} />
       </div>
     </>
   )

@@ -34,7 +34,7 @@ export type ProjectData = {
   technologies: Technology[]
 }
 
-export type Experience = {
+export type ExperienceData = {
   company: string
   title: string
   years: string
@@ -45,7 +45,7 @@ export type Experience = {
 export type ResumeData = {
   basic_info: ResumeBasicInfo
   projects: ProjectData[]
-  experience: Experience[]
+  experience: ExperienceData[]
 }
 
 export type Social = {
