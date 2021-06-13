@@ -1,4 +1,7 @@
 export { default as Header } from './Header'
+export { default as Polaroid } from './Polaroid'
+export { default as Circle } from './Circle'
+export { default as MacButtons } from './MacButtons'
 export { default as About } from './About'
 export { default as Github } from './Github'
 export { default as Projects } from './Projects'

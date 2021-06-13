@@ -2,7 +2,8 @@ import { Modal } from 'react-bootstrap'
 import AwesomeSlider from 'react-awesome-slider'
 import AwesomeSliderStyles from '../styles/light-slider.module.scss'
 import AwesomeSliderStyles2 from '../styles/dark-slider.module.scss'
-import { ProjectData } from "../interfaces"
+import { ProjectData } from '../interfaces'
+import { MacButtons } from './index'
 
 type Props = {
   show: boolean
@@ -62,24 +63,7 @@ const ProjectDetailsModal = ({ show, onHide, data }: Props) => {
     <div className="col-md-12">
       <div className="col-md-10 mx-auto" style={{ paddingBottom: '50px' }}>
           <div className="slider-tab">
-            <span
-              className="iconify slider-iconify"
-              data-icon="emojione:red-circle"
-              data-inline="false"
-              style={{ marginLeft: '5px' }}
-            ></span>{' '}
-            &nbsp;{' '}
-            <span
-              className="iconify slider-iconfiy"
-              data-icon="twemoji:yellow-circle"
-              data-inline="false"
-            ></span>{" "}
-            &nbsp;{" "}
-            <span
-              className="iconify slider-iconfiy"
-              data-icon="twemoji:green-circle"
-              data-inline="false"
-            ></span>
+            <MacButtons />
           </div>
           <AwesomeSlider
             cssModule={[AwesomeSliderStyles, AwesomeSliderStyles2]}
