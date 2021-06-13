@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Typical from 'react-typical'
 import Switch from 'react-switch'
-import { SharedData } from '../interfaces'
+import { SharedBasicInfo } from '../interfaces'
 import { useWindowSize } from '../utils/hooks'
 
 type Props = {
-    sharedData?: SharedData['basic_info']
+    sharedData?: SharedBasicInfo
 }
 
 const Header = ({ sharedData }: Props) => {

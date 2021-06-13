@@ -18,6 +18,7 @@ const About = ({ resumeBasicInfo, sharedBasicInfo }: Props) => {
     if (sharedBasicInfo) {
         profilePic = 'images/' + sharedBasicInfo.image
     }
+    
     if (resumeBasicInfo) {
         sectionName = resumeBasicInfo.section_name.about
         hello = resumeBasicInfo.description_header
