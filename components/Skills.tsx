@@ -1,4 +1,4 @@
-import { ResumeBasicInfo, SharedData } from '../interfaces'
+import { Icon, ResumeBasicInfo, SharedData } from '../interfaces'
 
 type Props = {
   sharedSkills?: SharedData['skills'],
@@ -11,21 +11,8 @@ const Skills = ({ sharedSkills, resumeBasicInfo }: Props) => {
 
   if (sharedSkills && resumeBasicInfo) {
     sectionName = resumeBasicInfo.section_name.skills
-    skills = sharedSkills.icons.map((skills, i) => (
-      <li className="list-inline-item mx-3" key={i}>
-        <span>
-          <div className="text-center skills-title">
-            <i className={skills.class} style={{ fontSize: '220%' }}>
-              <p
-                className="text-center"
-                style={{ fontSize: '30%', marginTop: '4px' }}
-              >
-                {skills.name}
-              </p>
-            </i>
-          </div>
-        </span>
-      </li>
+    skills = sharedSkills.icons.map((icon, i) => (
+      <Skill key={i} icon={icon} />
     ))
   }
 
@@ -44,5 +31,26 @@ const Skills = ({ sharedSkills, resumeBasicInfo }: Props) => {
     </section>
   )
 }
+
+type SkillProps = {
+  icon: Icon
+}
+
+const Skill = ({ icon }: SkillProps) => (
+  <li className="list-inline-item mx-3">
+    <span>
+      <div className="text-center skills-tile">
+        <i className={icon.class} style={{ fontSize: '220%' }}>
+          <p
+            className="text-center"
+            style={{ fontSize: '30%', marginTop: '4px' }}
+          >
+            {icon.name}
+          </p>
+        </i>
+      </div>
+    </span>
+  </li>
+)
 
 export default Skills

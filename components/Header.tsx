@@ -33,7 +33,8 @@ const Header = ({ sharedData }: Props) => {
   ), (props, prevProp) => true)
 
   return (
-    <header id="home" style={{ height: windowSize.height, display: 'block'}}>
+    <header id="home" style={{ height: windowSize.height, display: 'block'}}
+    >
       <div className="row aligner" style={{ height: '100%' }}>
         <div className="col-md-12">
           <div>

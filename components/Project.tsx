@@ -24,7 +24,7 @@ const Project = ({ project, onClick }: Props) => (
               position: 'relative'
             }}
           />
-          <span className="project-data">{project.startDate}</span>
+          <span className="project-date">{project.startDate}</span>
           <br />
           <p className="project-title-settings mt-3">
             {project.title}

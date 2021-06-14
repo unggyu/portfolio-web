@@ -5,6 +5,8 @@ type Props = {
 }
 
 const Footer = ({ sharedBasicInfo }: Props) => {
+  const now = new Date()
+  const year = now.getFullYear()
   let networks: JSX.Element[]
   if (sharedBasicInfo) {
     networks = sharedBasicInfo.social.map((network) => (
@@ -23,7 +25,8 @@ const Footer = ({ sharedBasicInfo }: Props) => {
         <div className="copyright py-4 text-center">
           <div className="container">
             <small>
-              Copyright &copy;{' '}
+              &copy;{' '}
+              {year}{'. '}
               {sharedBasicInfo ?
                 sharedBasicInfo.name :
                 '???'}
