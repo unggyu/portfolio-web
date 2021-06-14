@@ -1,0 +1,59 @@
+{
+    "basic_info": {
+      "name": "최웅규",
+      "titles": [ "웹 프론트엔드 개발자", "모바일 앱 개발자" ],
+      "social": [
+        {
+          "name": "github",
+          "url": "https://github.com/unggyu",
+          "class": "fab fa-github"
+        },
+        {
+          "name": "instagram",
+          "url": "https://www.instagram.com/slaplikenow",
+          "class": "fab fa-instagram"
+        }
+      ],
+      "image": "scenery.jpg"
+    },
+    "skills": {
+      "icons": [
+        {
+          "name": "C#",
+          "class": "devicon-csharp-plain",
+          "level": "80"
+        },
+        {
+          "name": "TypeScript",
+          "class": "devicon-typescript-plain",
+          "level": "80"
+        },
+        {
+          "name": "react",
+          "class": "devicon-react-original",
+          "level": "80"
+        },
+        {
+          "name": "nextjs",
+          "class": "devicon-nextjs-original",
+          "level": "80"
+        },
+        {
+          "name": "Bootstrap",
+          "class": "devicon-bootstrap-plain",
+          "level": "80"
+        },
+        {
+          "name": "MaterialUI",
+          "class": "devicon-materialui-plain",
+          "level": "80"
+        },
+        {
+          "name": "MySql",
+          "class": "devicon-mysql-plain",
+          "level": "80"
+        }
+      ]
+    },
+    "representative_skills": ["react"]
+  }
