@@ -1,9 +1,9 @@
-import { ExperienceData, ResumeBasicInfo } from '../interfaces'
 import {
   VerticalTimeline,
   VerticalTimelineElement
 } from 'react-vertical-timeline-component'
-import Badge from 'react-bootstrap/Badge'
+import { Work } from './index'
+import { ExperienceData, ResumeBasicInfo } from '../interfaces'
 
 type Props = {
   resumeExperience?: ExperienceData[]
@@ -12,56 +12,12 @@ type Props = {
 
 const Experience = ({ resumeExperience, resumeBasicInfo }: Props) => {
   let sectionName: string
-  let work: JSX.Element[]
+  let works: JSX.Element[]
   if (resumeExperience && resumeBasicInfo) {
     sectionName = resumeBasicInfo.section_name.experience
-    work = resumeExperience.map((work, i) => {
-      const technologies = work.technologies
-      const mainTechnologies = work.mainTech
-
-      const mainTech = mainTechnologies.map((technology, i) => (
-        <Badge pill className="main-badge mr-2 mb-2" key={i}>
-          {technology}
-        </Badge>
-      ))
-
-      const tech = technologies.map((technology, i) => (
-        <Badge pill className="experience-badge mr-2 mb-2" key={i}>
-          {technology}
-        </Badge>
-      ))
-
-      return (
-        <VerticalTimelineElement
-          className="vertical-timeline-element--work"
-          date={work.years}
-          iconStyle={{
-            background: '#AE944F',
-            color: '#fff',
-            textAlign: 'center'
-          }}
-          icon={<i className="fab fa-angular experience-icon" />}
-          key={i}
-        >
-          <div style={{ textAlign: 'left', marginBottom: '4px' }}>
-            {mainTech}
-          </div>
-          <h3
-            className="vertical-timeline-element-title"
-            style={{ textAlign: 'left' }}
-          >
-            {work.title}
-          </h3>
-          <h4
-            className="vertical-timeline-element-subtitle"
-            style={{ textAlign: 'left' }}
-          >
-            {work.company}
-          </h4>
-          <div style={{ textAlign: 'left', marginTop: '15px' }}>{tech}</div>
-        </VerticalTimelineElement>
-      )
-    })
+    works = resumeExperience.map((work, i) => (
+      <Work key={i} experience={work} />
+    ))
   }
 
   return (
@@ -77,16 +33,14 @@ const Experience = ({ resumeExperience, resumeBasicInfo }: Props) => {
       </div>
       <div className="col-md-8 mx-auto">
         <VerticalTimeline>
-          {work}
+          {works}
           <VerticalTimelineElement
             iconStyle={{
               background: '#AE944F',
               color: '#fff',
               textAlign: 'center'
             }}
-            icon={
-              <i className="fas fa-hourglass-start mx-auto experience-icon" />
-            }
+            icon={<i className="fas fa-hourglass-start mx-auto experience-icon" />}
           />
         </VerticalTimeline>
       </div>

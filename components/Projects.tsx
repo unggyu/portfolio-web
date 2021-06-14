@@ -1,6 +1,6 @@
 import { useState } from 'react'
+import { ProjectDetailsModal, Project } from './index'
 import { ResumeBasicInfo, ProjectData } from '../interfaces'
-import ProjectDetailsModal from './ProjectDetailsModal'
 
 type Props = {
   resumeProjects?: ProjectData[]
@@ -22,30 +22,12 @@ const Projects = ({ resumeProjects, resumeBasicInfo }: Props) => {
   let projects: JSX.Element[]
   if (resumeProjects && resumeBasicInfo) {
     sectionName = resumeBasicInfo.section_name.projects
-    projects = resumeProjects.map((project) => (
-      <div
-        className="col-sm-12 col-md-6 col-lg-4"
-        key={project.title}
-        style={{ cursor: 'pointer' }}
-      >
-        <span className="portfolio-item d-block">
-          <div className="foto" onClick={() => detailsModalShow(project)}>
-            <div>
-              <img
-                src={project.images[0]}
-                alt="projectImages"
-                height={230}
-                style={{ marginBottom: 0, paddingBottom: 0, position: 'relative' }}
-              />
-              <span className="project-data">{project.startDate}</span>
-              <br />
-              <p className="project-title-settings mt-3">
-                {project.title}
-              </p>
-            </div>
-          </div>
-        </span>
-      </div>
+    projects = resumeProjects.map((project, i) => (
+      <Project
+        key={i}
+        project={project}
+        onClick={detailsModalShow}
+      />
     ))
   }
 
