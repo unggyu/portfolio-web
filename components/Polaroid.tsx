@@ -1,14 +1,9 @@
-import { HTMLProps } from 'react'
 import { Icon } from '@iconify/react'
+import { PolaroidProps } from 'portfolio-web'
 import styles from './Polaroid.module.scss'
 import getLogoIcon from '../utils/icon'
 
-type Props = HTMLProps<HTMLElement> & {
-  imagePath: string
-  representativeSkills?: string[]
-}
-
-const Polaroid = ({ imagePath, representativeSkills, style }: Props) => {
+const Polaroid = ({ imagePath, representativeSkills, style }: PolaroidProps) => {
   let icons: JSX.Element[]
   if (representativeSkills) {
     icons = representativeSkills.map((skill, i) => (

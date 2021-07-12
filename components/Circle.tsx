@@ -1,8 +1,6 @@
-type Props = {
-  color: 'red' | 'yellow' | 'green'
-}
+import { CircleProps } from 'portfolio-web'
 
-const Circle = ({ color }: Props) => {
+const Circle = ({ color }: CircleProps) => {
   const prefix = color === 'red' ? 'emojione' : 'twemoji'
   return (
     <span

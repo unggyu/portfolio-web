@@ -1,13 +1,8 @@
 import { useState } from 'react'
+import { ProjectData, ProjectsProps } from 'portfolio-web'
 import { ProjectDetailsModal, Project } from './index'
-import { ResumeBasicInfo, ProjectData } from '../interfaces'
 
-type Props = {
-  resumeProjects?: ProjectData[]
-  resumeBasicInfo?: ResumeBasicInfo
-}
-
-const Projects = ({ resumeProjects, resumeBasicInfo }: Props) => {
+const Projects = ({ resumeProjects, resumeBasicInfo }: ProjectsProps) => {
   const [deps, setDeps] = useState<ProjectData>()
   const [isModalOpen, setIsModalOpen] = useState(false)
 

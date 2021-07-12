@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
 import Typical from 'react-typical'
 import Switch from 'react-switch'
-import { SharedBasicInfo } from '../interfaces'
+import { HeaderProps } from 'portfolio-web'
 import { useWindowSize } from '../utils/hooks'
 
-type Props = {
-  sharedData?: SharedBasicInfo
-}
-
-const Header = ({ sharedData }: Props) => {
+const Header = ({ sharedData }: HeaderProps) => {
   const [checked, setChecked] = useState(false)
   const windowSize = useWindowSize()
 
@@ -50,6 +46,7 @@ const Header = ({ sharedData }: Props) => {
               <HeaderTitleTypeAnimation />
             </div>
             <Switch
+              id="icon-switch"
               checked={checked}
               onChange={onThemeSwitchChange}
               offColor="#baaa80"
@@ -87,7 +84,6 @@ const Header = ({ sharedData }: Props) => {
                   }}
                 />
               }
-              id="icon-switch"
             />
           </div>
         </div>

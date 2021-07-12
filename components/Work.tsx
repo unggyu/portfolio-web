@@ -1,12 +1,8 @@
 import { VerticalTimelineElement } from 'react-vertical-timeline-component'
 import Badge from 'react-bootstrap/Badge'
-import { ExperienceData } from '../interfaces'
+import { WorkProps } from 'portfolio-web'
 
-type Props = {
-  experience: ExperienceData
-}
-
-const Work = ({ experience }: Props) => {
+const Work = ({ experience }: WorkProps) => {
   const technologies = experience.technologies
   const mainTechnologies = experience.mainTech
 

@@ -1,13 +1,7 @@
+import { AboutProps } from 'portfolio-web'
 import { Polaroid, MacButtons } from './index'
-import { ResumeBasicInfo, SharedBasicInfo } from '../interfaces'
 
-type Props = {
-  resumeBasicInfo?: ResumeBasicInfo
-  sharedBasicInfo?: SharedBasicInfo
-  representativeSkills?: string[]
-}
-
-const About = ({ resumeBasicInfo, sharedBasicInfo, representativeSkills }: Props) => {
+const About = ({ resumeBasicInfo, sharedBasicInfo, representativeSkills }: AboutProps) => {
   let profilePic: string
   let sectionName: string
   let hello: string
@@ -16,7 +10,7 @@ const About = ({ resumeBasicInfo, sharedBasicInfo, representativeSkills }: Props
   if (sharedBasicInfo) {
     profilePic = 'images/' + sharedBasicInfo.image
   }
-  
+
   if (resumeBasicInfo) {
     sectionName = resumeBasicInfo.section_name.about
     hello = resumeBasicInfo.description_header
@@ -34,9 +28,7 @@ const About = ({ resumeBasicInfo, sharedBasicInfo, representativeSkills }: Props
             <Polaroid
               imagePath={profilePic}
               representativeSkills={representativeSkills}
-              style={{
-                margin: '55px 75px 30px'
-              }}
+              style={{ margin: '55px 75px 30px' }}
             />
           </div>
           <div className="col-md-8 center">
@@ -51,7 +43,8 @@ const About = ({ resumeBasicInfo, sharedBasicInfo, representativeSkills }: Props
                     height: 'auto',
                     fontSize: '132%',
                     lineHeight: '200%'
-                  }}>
+                  }}
+                >
                   <br />
                   <span className="wave">{hello} :) </span>
                   <br />

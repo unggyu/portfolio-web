@@ -1,7 +1,7 @@
 // client
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { ResumeData, SharedData } from '../interfaces'
+import { IndexPageProps } from 'portfolio-web'
 import {
   Header,
   About,
@@ -34,13 +34,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-type Props = {
-  sharedData?: SharedData
-  resumeData?: ResumeData
-  errors?: string
-}
-
-const IndexPage = ({ sharedData, resumeData }: Props) => {
+const IndexPage = ({ sharedData, resumeData }: IndexPageProps) => {
 
   return (
     <>

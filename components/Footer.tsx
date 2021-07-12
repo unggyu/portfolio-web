@@ -1,10 +1,6 @@
-import { SharedBasicInfo } from '../interfaces';
+import { FooterProps } from 'portfolio-web';
 
-type Props = {
-  sharedBasicInfo?: SharedBasicInfo
-}
-
-const Footer = ({ sharedBasicInfo }: Props) => {
+const Footer = ({ sharedBasicInfo }: FooterProps) => {
   const now = new Date()
   const year = now.getFullYear()
   let networks: JSX.Element[]

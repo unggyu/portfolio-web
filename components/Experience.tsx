@@ -2,15 +2,10 @@ import {
   VerticalTimeline,
   VerticalTimelineElement
 } from 'react-vertical-timeline-component'
+import { ExperienceProps } from 'portfolio-web'
 import { Work } from './index'
-import { ExperienceData, ResumeBasicInfo } from '../interfaces'
 
-type Props = {
-  resumeExperience?: ExperienceData[]
-  resumeBasicInfo?: ResumeBasicInfo
-}
-
-const Experience = ({ resumeExperience, resumeBasicInfo }: Props) => {
+const Experience = ({ resumeExperience, resumeBasicInfo }: ExperienceProps) => {
   let sectionName: string
   let works: JSX.Element[]
   if (resumeExperience && resumeBasicInfo) {

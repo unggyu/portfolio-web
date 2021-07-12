@@ -1,11 +1,6 @@
-import { Icon, ResumeBasicInfo, SharedData } from '../interfaces'
+import { Icon, SkillsProps } from 'portfolio-web'
 
-type Props = {
-  sharedSkills?: SharedData['skills'],
-  resumeBasicInfo?: ResumeBasicInfo
-}
-
-const Skills = ({ sharedSkills, resumeBasicInfo }: Props) => {
+const Skills = ({ sharedSkills, resumeBasicInfo }: SkillsProps) => {
   let sectionName: string
   let skills: JSX.Element[]
 

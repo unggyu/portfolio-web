@@ -1,17 +1,11 @@
 import { Modal } from 'react-bootstrap'
 import AwesomeSlider from 'react-awesome-slider'
+import { ProjectDetailsModalProps } from 'portfolio-web'
 import AwesomeSliderStyles from '../styles/light-slider.module.scss'
 import AwesomeSliderStyles2 from '../styles/dark-slider.module.scss'
-import { ProjectData } from '../interfaces'
 import { MacButtons } from './index'
 
-type Props = {
-  show: boolean
-  onHide: () => void
-  data?: ProjectData
-}
-
-const ProjectDetailsModal = ({ show, onHide, data }: Props) => {
+const ProjectDetailsModal = ({ show, onHide, data }: ProjectDetailsModalProps) => {
   let tech: JSX.Element[]
   let img: JSX.Element[]
 
@@ -86,7 +80,7 @@ const ProjectDetailsModal = ({ show, onHide, data }: Props) => {
                 <i
                   className="fas fa-external-link-alt"
                   style={{ marginLeft: '10px' }}
-                ></i>
+                />
               </a>
             ) : null}
           </h3>

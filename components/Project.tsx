@@ -1,11 +1,6 @@
-import { ProjectData } from '../interfaces'
+import { ProjectProps } from 'portfolio-web'
 
-type Props = {
-  project: ProjectData
-  onClick: (project: ProjectData) => void
-}
-
-const Project = ({ project, onClick }: Props) => (
+const Project = ({ project, onClick }: ProjectProps) => (
   <div
     className="col-sm-12 col-md-6 col-lg-4 mx-auto"
     key={project.title}
