@@ -110,8 +110,8 @@ declare module 'portfolio-web' {
   }
 
   export type IndexPageProps = {
-    sharedData?: SharedData
-    resumeData?: ResumeData
+    sharedData: SharedData
+    resumeData: ResumeData
     errors?: string
   }
 }
