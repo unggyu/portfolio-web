@@ -1,4 +1,4 @@
-body[data-theme="dark"] {  
+body[data-theme="dark"] {
 
    @import '../dark-slider.module.scss';
 
@@ -58,7 +58,7 @@ body[data-theme="dark"] {
       .section-title {
          color: white !important;
       }
-      .foto div {
+      .foto > div {
          background: #6d6d6d;
       }
       .project-title-settings {
@@ -89,7 +89,7 @@ body[data-theme="dark"] {
       .vertical-timeline-element-icon {
          background: #919191 !important;
       }
-      @media only screen and (max-width: 1169px) { 
+      @media only screen and (max-width: 1169px) {
          .vertical-timeline-element-date {
             color: black;
          }

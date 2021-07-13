@@ -7,8 +7,9 @@ import getLogoIcon from '../utils/icon'
 const Polaroid = ({ imagePath, representativeSkills, style }: PolaroidProps) => (
   <div className="polaroid" style={style}>
     <span style={{ cursor: 'auto' }}>
-      <div style={{ position: 'relative', width: 187.5, height: 250 }}>
+      <div className="unset-img">
         <Image
+          className="custom-img"
           layout="fill"
           objectFit="cover"
           src={imagePath}
