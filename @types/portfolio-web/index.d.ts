@@ -64,9 +64,9 @@ declare module 'portfolio-web' {
   }
 
   export type AboutProps = {
-    resumeBasicInfo?: ResumeBasicInfo
-    sharedBasicInfo?: SharedBasicInfo
-    representativeSkills?: string[]
+    resumeBasicInfo: ResumeBasicInfo
+    sharedBasicInfo: SharedBasicInfo
+    representativeSkills: string[]
   }
   export type CircleProps = {
     color: 'red' | 'yellow' | 'green'
@@ -88,18 +88,31 @@ declare module 'portfolio-web' {
     imagePath: string
     representativeSkills?: string[]
   }
+  export type PolaroidIconsProps = {
+    representativeSkills: string[]
+  }
   export type ProjectProps = {
     project: ProjectData
     onClick(project: ProjectData): void
   }
   export type ProjectDetailsModalProps = {
     show: boolean
-    data?: ProjectData
+    data: ProjectData
     onHide(): void
   }
+  export type ProjectDetailsModalImagesProps = {
+    images: string[]
+  }
+  export type ProjectDetailsModalTechProps = {
+    technologies: Technology[]
+  }
   export type ProjectsProps = {
-    resumeProjects?: ProjectData[]
-    resumeBasicInfo?: ResumeBasicInfo
+    resumeProjects: ProjectData[]
+    resumeBasicInfo: ResumeBasicInfo
+  }
+  export type ProjectItemsProps = {
+    projects: ProjectData[]
+    onItemClick(project: ProjectData): void
   }
   export type SkillsProps = {
     sharedSkills?: SharedData['skills'],

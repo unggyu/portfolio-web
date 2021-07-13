@@ -2,20 +2,10 @@ import { AboutProps } from 'portfolio-web'
 import { Polaroid, MacButtons } from './index'
 
 const About = ({ resumeBasicInfo, sharedBasicInfo, representativeSkills }: AboutProps) => {
-  let profilePic: string
-  let sectionName: string
-  let hello: string
-  let about: string
-
-  if (sharedBasicInfo) {
-    profilePic = 'images/' + sharedBasicInfo.image
-  }
-
-  if (resumeBasicInfo) {
-    sectionName = resumeBasicInfo.section_name.about
-    hello = resumeBasicInfo.description_header
-    about = resumeBasicInfo.description
-  }
+  const profilePic = '/images/' + sharedBasicInfo.image
+  const sectionName = resumeBasicInfo.section_name.about
+  const hello = resumeBasicInfo.description_header
+  const about = resumeBasicInfo.description
 
   return (
     <section id="about">
@@ -28,7 +18,7 @@ const About = ({ resumeBasicInfo, sharedBasicInfo, representativeSkills }: About
             <Polaroid
               imagePath={profilePic}
               representativeSkills={representativeSkills}
-              style={{ margin: '55px 75px 30px' }}
+              style={{ margin: '55px auto' }}
             />
           </div>
           <div className="col-md-8 center">
