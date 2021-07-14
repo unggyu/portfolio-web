@@ -29,12 +29,12 @@
           "level": "80"
         },
         {
-          "name": "react",
+          "name": "React",
           "className": "devicon-react-original",
           "level": "80"
         },
         {
-          "name": "nextjs",
+          "name": "Nextjs",
           "className": "devicon-nextjs-original",
           "level": "80"
         },
@@ -44,12 +44,12 @@
           "level": "80"
         },
         {
-          "name": "MaterialUI",
+          "name": "Material-UI",
           "className": "devicon-materialui-plain",
           "level": "80"
         },
         {
-          "name": "MySql",
+          "name": "MySQL",
           "className": "devicon-mysql-plain",
           "level": "80"
         }

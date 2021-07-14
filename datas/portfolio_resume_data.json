@@ -38,6 +38,27 @@
           "name": "Premiere Pro"
         }
       ]
+    },
+    {
+      "title": "Monster Energy",
+      "startDate": "2021",
+      "description": "몬스터 에너지 음료들을 소개하는 React Native 앱입니다.",
+      "images": [
+        "/images/portfolio/monster-energy-app/p1.gif",
+        "/images/portfolio/monster-energy-app/p2.gif",
+        "/images/portfolio/monster-energy-app/p3.gif"
+      ],
+      "url": "https://github.com/unggyu/monster-energy-app",
+      "technologies": [
+        {
+          "className": "devicon-react-plain",
+          "name": "React Native"
+        },
+        {
+          "className": "devicon-typescript-plain",
+          "name": "TypeScript"
+        }
+      ]
     }
   ],
   "experience": [
