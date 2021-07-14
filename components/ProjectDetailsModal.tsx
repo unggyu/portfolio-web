@@ -74,13 +74,13 @@ const ProjectDetailsModal = ({
 
 const Tech = ({ technologies }: ProjectDetailsModalTechProps) => (
   <>
-    {technologies.map((icons, i) => (
+    {technologies.map(({ className, name }, i) => (
       <li className="list-inline-item mx-3" key={i}>
         <span>
           <div className="text-center">
-            <i className={icons.class} style={{ fontSize: '300%' }}>
+            <i className={className} style={{ fontSize: '300%' }}>
               <p className="text-center" style={{ fontSize: '30%' }}>
-                {icons.name}
+                {name}
               </p>
             </i>
           </div>

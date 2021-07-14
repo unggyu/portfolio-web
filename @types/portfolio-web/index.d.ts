@@ -6,7 +6,7 @@ declare module 'portfolio-web' {
     name: string
   }
   export type Technology = {
-    class: string
+    className: string
     name: string
   }
   export type ResumeBasicInfo = {
@@ -46,7 +46,7 @@ declare module 'portfolio-web' {
   }
   export type Icon = {
     name: string
-    class: string
+    className: string
     level: string
   }
   export type SharedBasicInfo = {
@@ -72,17 +72,20 @@ declare module 'portfolio-web' {
     color: 'red' | 'yellow' | 'green'
   }
   export type ExperienceProps = {
-    resumeExperience?: ExperienceData[]
-    resumeBasicInfo?: ResumeBasicInfo
+    resumeExperience: ExperienceData[]
+    resumeBasicInfo: ResumeBasicInfo
   }
   export type FooterProps = {
-    sharedBasicInfo?: SharedBasicInfo
+    sharedBasicInfo: SharedBasicInfo
+  }
+  export type FooterSocialsProps = {
+    socials: Social[]
   }
   export type GithubProps = {
     username: string
   }
   export type HeaderProps = {
-    sharedData?: SharedBasicInfo
+    sharedData: SharedBasicInfo
   }
   export type PolaroidProps = HTMLProps<HTMLElement> & {
     imagePath: string
@@ -112,11 +115,20 @@ declare module 'portfolio-web' {
     onItemClick(project: ProjectData): void
   }
   export type SkillsProps = {
-    sharedSkills?: SharedData['skills'],
-    resumeBasicInfo?: ResumeBasicInfo
+    sharedSkills: SharedData['skills'],
+    resumeBasicInfo: ResumeBasicInfo
+  }
+  export type SkillProps = {
+    icon: Icon
   }
   export type WorkProps = {
     experience: ExperienceData
+  }
+  export type WorkMainTechProps = {
+    technologies: string[]
+  }
+  export type WorkTechProps = {
+    technologies: string[]
   }
 
   export type IndexPageProps = {

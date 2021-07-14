@@ -20,37 +20,37 @@
       "icons": [
         {
           "name": "C#",
-          "class": "devicon-csharp-plain",
+          "className": "devicon-csharp-plain",
           "level": "80"
         },
         {
           "name": "TypeScript",
-          "class": "devicon-typescript-plain",
+          "className": "devicon-typescript-plain",
           "level": "80"
         },
         {
           "name": "react",
-          "class": "devicon-react-original",
+          "className": "devicon-react-original",
           "level": "80"
         },
         {
           "name": "nextjs",
-          "class": "devicon-nextjs-original",
+          "className": "devicon-nextjs-original",
           "level": "80"
         },
         {
           "name": "Bootstrap",
-          "class": "devicon-bootstrap-plain",
+          "className": "devicon-bootstrap-plain",
           "level": "80"
         },
         {
           "name": "MaterialUI",
-          "class": "devicon-materialui-plain",
+          "className": "devicon-materialui-plain",
           "level": "80"
         },
         {
           "name": "MySql",
-          "class": "devicon-mysql-plain",
+          "className": "devicon-mysql-plain",
           "level": "80"
         }
       ]

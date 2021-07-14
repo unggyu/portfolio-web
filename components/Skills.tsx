@@ -1,46 +1,48 @@
-import { Icon, SkillsProps } from 'portfolio-web'
+import { SkillProps, SkillsProps } from 'portfolio-web'
 
-const Skills = ({ sharedSkills, resumeBasicInfo }: SkillsProps) => {
-  let sectionName: string
-  let skills: JSX.Element[]
-
-  if (sharedSkills && resumeBasicInfo) {
-    sectionName = resumeBasicInfo.section_name.skills
-    skills = sharedSkills.icons.map((icon, i) => (
-      <Skill key={i} icon={icon} />
-    ))
+const Skills = ({
+  sharedSkills: {
+    icons
+  },
+  resumeBasicInfo: {
+    section_name: {
+      skills
+    }
   }
-
-  return (
-    <section id="skills">
+}: SkillsProps) => (
+  <section id="skills">
+    <div className="col-md-12">
       <div className="col-md-12">
-        <div className="col-md-12">
-          <h1 className="section-title">
-            <span className="text-white">{sectionName}</span>
-          </h1>
-        </div>
-        <div className="col-md-12 text-center">
-          <ul className="list-inline mx-auto skill-icon">{skills}</ul>
-        </div>
+        <h1 className="section-title">
+          <span className="text-white">{skills}</span>
+        </h1>
       </div>
-    </section>
-  )
-}
+      <div className="col-md-12 text-center">
+        <ul className="list-inline mx-auto skill-icon">
+          {icons.map((icon, i) =>
+            <Skill key={i} icon={icon} />
+          )}
+        </ul>
+      </div>
+    </div>
+  </section>
+)
 
-type SkillProps = {
-  icon: Icon
-}
-
-const Skill = ({ icon }: SkillProps) => (
+const Skill = ({
+  icon: {
+    className,
+    name
+  }
+}: SkillProps) => (
   <li className="list-inline-item mx-3">
     <span>
       <div className="text-center skills-tile">
-        <i className={icon.class} style={{ fontSize: '220%' }}>
+        <i className={className} style={{ fontSize: '220%' }}>
           <p
             className="text-center"
             style={{ fontSize: '30%', marginTop: '4px' }}
           >
-            {icon.name}
+            {name}
           </p>
         </i>
       </div>

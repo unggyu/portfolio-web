@@ -22,19 +22,19 @@
       "url": "https://github.com/unggyu/every-second",
       "technologies": [
         {
-          "class": "devicon-react-plain",
+          "className": "devicon-react-plain",
           "name": "React"
         },
         {
-          "class": "devicon-typescript-plain",
+          "className": "devicon-typescript-plain",
           "name": "TypeScript"
         },
         {
-          "class": "devicon-materialui-plain",
+          "className": "devicon-materialui-plain",
           "name": "Material UI"
         },
         {
-          "class": "devicon-premierepro-plain",
+          "className": "devicon-premierepro-plain",
           "name": "Premiere Pro"
         }
       ]
