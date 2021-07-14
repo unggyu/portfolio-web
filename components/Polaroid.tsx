@@ -1,37 +1,38 @@
-import { HTMLProps } from 'react'
+import Image from 'next/image'
 import { Icon } from '@iconify/react'
+import { PolaroidProps, PolaroidIconsProps } from 'portfolio-web'
 import styles from './Polaroid.module.scss'
 import getLogoIcon from '../utils/icon'
 
-type Props = HTMLProps<HTMLElement> & {
-  imagePath: string
-  representativeSkills?: string[]
-}
+const Polaroid = ({ imagePath, representativeSkills, style }: PolaroidProps) => (
+  <div className="polaroid" style={style}>
+    <span style={{ cursor: 'auto' }}>
+      <div className="unset-img">
+        <Image
+          className="custom-img"
+          layout="fill"
+          objectFit="cover"
+          src={imagePath}
+          alt="Avator placeholder"
+        />
+      </div>
+      {representativeSkills ?
+        <Icons representativeSkills={representativeSkills} /> :
+        null}
+    </span>
+  </div>
+)
 
-const Polaroid = ({ imagePath, representativeSkills, style }: Props) => {
-  let icons: JSX.Element[]
-  if (representativeSkills) {
-    icons = representativeSkills.map((skill, i) => (
+const Icons = ({ representativeSkills }: PolaroidIconsProps) => (
+  <>
+    {representativeSkills.map((skill, i) => (
       <Icon
         key={i}
         className={styles.icon}
         icon={getLogoIcon(skill)}
       />
-    ))
-  }
-
-  return (
-    <div className="polaroid" style={style}>
-      <span style={{ cursor: 'auto' }}>
-        <img
-          height="250px"
-          src={imagePath}
-          alt="Avator placeholder"
-        />
-        {icons}
-      </span>
-    </div>
-  )
-}
+    ))}
+  </>
+)
 
 export default Polaroid

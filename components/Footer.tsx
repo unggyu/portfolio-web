@@ -1,41 +1,39 @@
-import { SharedBasicInfo } from '../interfaces';
+import { FooterProps, FooterSocialsProps } from 'portfolio-web';
 
-type Props = {
-  sharedBasicInfo?: SharedBasicInfo
-}
+const Footer = ({
+  sharedBasicInfo,
+  sharedBasicInfo: { social }
+}: FooterProps) => (
+  <footer>
+    <div className="col-md-12">
+      <div className="social-links">
+        <Networks socials={social} />
+      </div>
+      <div className="copyright py-4 text-center">
+        <div className="container">
+          <small>
+            &copy;{' '}
+            {(new Date()).getFullYear()}{'. '}
+            {sharedBasicInfo ?
+              sharedBasicInfo.name :
+              '???'}
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+)
 
-const Footer = ({ sharedBasicInfo }: Props) => {
-  const now = new Date()
-  const year = now.getFullYear()
-  let networks: JSX.Element[]
-  if (sharedBasicInfo) {
-    networks = sharedBasicInfo.social.map((network) => (
+const Networks = ({ socials }: FooterSocialsProps) => (
+  <>
+    {socials.map((network) => (
       <span key={network.name} className="m-4">
         <a href={network.url} target="_blank" rel="noopener noreferrer">
           <i className={network.class} />
         </a>
       </span>
-    ))
-  }
-
-  return (
-    <footer>
-      <div className="col-md-12">
-        <div className="social-links">{networks}</div>
-        <div className="copyright py-4 text-center">
-          <div className="container">
-            <small>
-              &copy;{' '}
-              {year}{'. '}
-              {sharedBasicInfo ?
-                sharedBasicInfo.name :
-                '???'}
-            </small>
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
-}
+    ))}
+  </>
+)
 
 export default Footer
