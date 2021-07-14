@@ -100,9 +100,6 @@ declare module 'portfolio-web' {
     data: ProjectData
     onHide(): void
   }
-  export type ProjectDetailsModalImagesProps = {
-    images: string[]
-  }
   export type ProjectDetailsModalTechProps = {
     technologies: Technology[]
   }

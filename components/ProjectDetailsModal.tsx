@@ -1,8 +1,8 @@
 import { Modal } from 'react-bootstrap'
 import AwesomeSlider from 'react-awesome-slider'
-import { ProjectDetailsModalProps, ProjectDetailsModalImagesProps, ProjectDetailsModalTechProps } from 'portfolio-web'
 import AwesomeSliderStyles from '../styles/light-slider.module.scss'
 import AwesomeSliderStyles2 from '../styles/dark-slider.module.scss'
+import { ProjectDetailsModalProps, ProjectDetailsModalTechProps } from 'portfolio-web'
 import { MacButtons } from './index'
 
 const ProjectDetailsModal = ({
@@ -39,7 +39,9 @@ const ProjectDetailsModal = ({
           animation="scaleOutAnimation"
           className="slider-image"
         >
-          {images ? <Images images={images} /> : null}
+          {images ? images.map((elem, i) => (
+            <div key={i} data-src={elem} />
+          )) : null}
         </AwesomeSlider>
       </div>
       <div className="col-md-10 mx-auto">
@@ -68,14 +70,6 @@ const ProjectDetailsModal = ({
       </div>
     </div>
   </Modal>
-)
-
-const Images = ({ images }: ProjectDetailsModalImagesProps) => (
-  <>
-    {images.map((elem, i) => (
-      <div key={i} data-src={elem} />
-    ))}
-  </>
 )
 
 const Tech = ({ technologies }: ProjectDetailsModalTechProps) => (
