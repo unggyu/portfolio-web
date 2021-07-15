@@ -2,8 +2,8 @@ import { Modal } from 'react-bootstrap'
 import AwesomeSlider from 'react-awesome-slider'
 import AwesomeSliderStyles from '../styles/light-slider.module.scss'
 import AwesomeSliderStyles2 from '../styles/dark-slider.module.scss'
-import { ProjectDetailsModalProps, ProjectDetailsModalTechProps } from 'portfolio-web'
-import { MacButtons } from './index'
+import { ProjectDetailsModalProps, ProjectDetailsModalTechProps } from 'portfolio'
+import MacButtons from './MacButtons'
 
 const ProjectDetailsModal = ({
   show,
@@ -74,7 +74,7 @@ const ProjectDetailsModal = ({
 
 const Tech = ({ technologies }: ProjectDetailsModalTechProps) => (
   <>
-    {technologies.map(({ className, name }, i) => (
+    {technologies.map(({ class_name: className, name }, i) => (
       <li className="list-inline-item mx-3" key={i}>
         <span>
           <div className="text-center">

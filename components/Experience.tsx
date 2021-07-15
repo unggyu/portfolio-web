@@ -2,12 +2,12 @@ import {
   VerticalTimeline,
   VerticalTimelineElement
 } from 'react-vertical-timeline-component'
-import { ExperienceProps } from 'portfolio-web'
-import { Work } from './index'
+import { ExperienceProps } from 'portfolio'
+import Work from './Work'
 
 const Experience = ({
-  resumeExperience,
-  resumeBasicInfo: {
+  resume_experience: resumeExperience,
+  resume_basic_info: {
     section_name: {
       experience
     }

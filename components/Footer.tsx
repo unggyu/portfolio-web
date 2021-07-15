@@ -1,8 +1,8 @@
-import { FooterProps, FooterSocialsProps } from 'portfolio-web';
+import { FooterProps, FooterSocialsProps } from 'portfolio';
 
 const Footer = ({
-  sharedBasicInfo,
-  sharedBasicInfo: { social }
+  shared_basic_info: sharedBasicInfo,
+  shared_basic_info: { social }
 }: FooterProps) => (
   <footer>
     <div className="col-md-12">
@@ -26,10 +26,10 @@ const Footer = ({
 
 const Networks = ({ socials }: FooterSocialsProps) => (
   <>
-    {socials.map((network) => (
-      <span key={network.name} className="m-4">
-        <a href={network.url} target="_blank" rel="noopener noreferrer">
-          <i className={network.class} />
+    {socials.map(({ name, url, class_name }) => (
+      <span key={name} className="m-4">
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          <i className={class_name} />
         </a>
       </span>
     ))}

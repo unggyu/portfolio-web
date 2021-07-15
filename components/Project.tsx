@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import { ProjectProps } from 'portfolio-web'
+import { ProjectProps } from 'portfolio'
 
 const Project = ({
   project,
   project: {
     title,
     images,
-    startDate
+    start_date: startDate
   },
   onClick
 }: ProjectProps) => (
@@ -19,13 +19,15 @@ const Project = ({
       <div className="foto" onClick={() => onClick(project)}>
         <div>
           <div className="unset-img">
-            <Image
-              className="custom-img"
-              src={images[0]}
-              alt="Project image"
-              layout="fill"
-              objectFit="cover"
-            />
+            {images ? (
+              <Image
+                className="custom-img"
+                src={images[0].path}
+                alt="Project image"
+                layout="fill"
+                objectFit="cover"
+              />
+            ) : null}
           </div>
           <span className="project-date">{startDate}</span>
           <br />

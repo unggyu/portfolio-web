@@ -1,19 +1,19 @@
 import { VerticalTimelineElement } from 'react-vertical-timeline-component'
 import Badge from 'react-bootstrap/Badge'
-import { WorkMainTechProps, WorkProps, WorkTechProps } from 'portfolio-web'
+import { WorkMainTechProps, WorkProps, WorkTechProps } from 'portfolio'
 
 const Work = ({
   experience: {
-    years,
+    start_date,
+    end_date,
     title,
     company,
-    technologies,
-    mainTech
+    technologies
   }
 }: WorkProps) => (
   <VerticalTimelineElement
     className="vertical-timeline-element--work"
-    date={years}
+    date={`${start_date.getFullYear()}.${start_date.getMonth()} - ${end_date.getFullYear()}-${end_date.getMonth()}`}
     iconStyle={{
       background: '#AE944F',
       color: '#fff',
@@ -23,7 +23,12 @@ const Work = ({
     iconClassName="d-flex flex-column"
   >
     <div style={{ textAlign: 'left', marginBottom: '4px' }}>
-      <MainTech technologies={mainTech} />
+      <MainTech
+        technologies={technologies
+          .filter(tech => tech.is_main)
+          .map(tech => tech.name)
+        }
+      />
     </div>
     <h3
       className="vertical-timeline-element-title"
@@ -38,7 +43,7 @@ const Work = ({
       {company}
     </h4>
     <div style={{ textAlign: 'left', marginTop: '15px' }}>
-      <Tech technologies={technologies} />
+      <Tech technologies={technologies.map(tech => tech.name)} />
     </div>
   </VerticalTimelineElement>
 )

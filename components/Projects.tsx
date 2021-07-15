@@ -1,25 +1,19 @@
 import { useState } from 'react'
-import { ProjectData, ProjectItemsProps, ProjectsProps } from 'portfolio-web'
-import { ProjectDetailsModal, Project } from './index'
+import { ProjectItemsProps, ProjectsProps, Project } from 'portfolio'
+import ProjectDetailsModal from './ProjectDetailsModal'
+import ProjectComponent from './Project'
 
 const Projects = ({
-  resumeProjects,
-  resumeBasicInfo: {
+  resume_projects: resumeProjects,
+  resume_basic_info: {
     section_name: { projects }
   }
 }: ProjectsProps) => {
-  const [deps, setDeps] = useState<ProjectData>({
-    description: '',
-    images: [],
-    startDate: '',
-    technologies: [],
-    title: '',
-    url: ''
-  })
+  const [deps, setDeps] = useState<Project>(new Project())
   const [isModalOpen, setIsModalOpen] = useState(false)
   const sectionName = projects
 
-  const detailsModalShow = (project: ProjectData) => {
+  const detailsModalShow = (project: Project) => {
     setDeps(project)
     setIsModalOpen(true)
   }
@@ -34,7 +28,7 @@ const Projects = ({
         </h1>
         <div className="col-md-12 mx-auto">
           <div className="row mx-auto">
-            {<Items projects={resumeProjects} onItemClick={detailsModalShow} />}
+            <Items projects={resumeProjects} onItemClick={detailsModalShow} />
           </div>
         </div>
         <ProjectDetailsModal
@@ -50,7 +44,7 @@ const Projects = ({
 const Items = ({ projects, onItemClick }: ProjectItemsProps) => (
   <>
     {projects.map((project, i) => (
-      <Project
+      <ProjectComponent
         key={i}
         project={project}
         onClick={onItemClick}

@@ -1,4 +1,4 @@
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'devicon/devicon.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'

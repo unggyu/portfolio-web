@@ -1,5 +1,6 @@
-import { AboutProps } from 'portfolio-web'
-import { Polaroid, MacButtons } from './index'
+import { AboutProps } from 'portfolio'
+import Polaroid from './Polaroid'
+import MacButtons from './MacButtons'
 
 const About = ({
   resumeBasicInfo: {
@@ -12,7 +13,7 @@ const About = ({
   sharedBasicInfo: {
     image
   },
-  representativeSkills
+  representative_skills: representativeSkills
 }: AboutProps) => (
   <section id="about">
     <div className="col-md-12">
@@ -22,8 +23,8 @@ const About = ({
       <div className="row center mx-auto mb-5">
         <div className="col-md-4 col-xl-3 mb-5 center">
           <Polaroid
-            imagePath={image}
-            representativeSkills={representativeSkills}
+            image_path={image}
+            representative_skills={representativeSkills}
             style={{ margin: 'auto 10%'}}
           />
         </div>
