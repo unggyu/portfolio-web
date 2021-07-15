@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Icon } from '@iconify/react'
-import { PolaroidProps, PolaroidIconsProps } from 'portfolio'
+import { PolaroidProps, PolaroidIconsProps } from 'portfolio-web'
 import styles from './Polaroid.module.scss'
 import getLogoIcon from '../utils/icon'
 

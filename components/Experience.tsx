@@ -2,7 +2,7 @@ import {
   VerticalTimeline,
   VerticalTimelineElement
 } from 'react-vertical-timeline-component'
-import { ExperienceProps } from 'portfolio'
+import { ExperienceProps } from 'portfolio-web'
 import Work from './Work'
 
 const Experience = ({

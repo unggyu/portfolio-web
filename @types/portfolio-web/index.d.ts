@@ -1,6 +1,6 @@
 import { HTMLProps } from 'react'
 
-declare module 'portfolio' {
+declare module 'portfolio-web' {
   export class SharedData {
     basic_info: SharedBasicInfo
     skills: {
@@ -31,11 +31,11 @@ declare module 'portfolio' {
   }
   export class Project {
     title: string
-    start_date: string
+    start_date: number
     description: string
     url: string
-    images: string[]
-    technologies: ProjectTechnology[]
+    images?: string[]
+    technologies?: ProjectTechnology[]
   }
   export class ProjectTechnology {
     name: string

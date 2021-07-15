@@ -16,9 +16,9 @@ declare module 'entity' {
     @Column()
     url: string
     @OneToMany(type => ProjectImage, image => image.project)
-    images?: ProjectImage[]
+    images: ProjectImage[]
     @OneToMany(type => ProjectTechnology, technology => technology.project)
-    technologies?: ProjectTechnology[]
+    technologies: ProjectTechnology[]
   }
   @Entity()
   export class ProjectImage extends MyEntityBase {

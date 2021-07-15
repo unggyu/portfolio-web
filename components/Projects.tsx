@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ProjectItemsProps, ProjectsProps, Project } from 'portfolio'
+import { ProjectItemsProps, ProjectsProps, Project } from 'portfolio-web'
 import ProjectDetailsModal from './ProjectDetailsModal'
 import ProjectComponent from './Project'
 

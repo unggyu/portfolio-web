@@ -1,4 +1,4 @@
-import { SkillProps, SkillsProps } from 'portfolio'
+import { SkillProps, SkillsProps } from 'portfolio-web'
 
 const Skills = ({
   shared_skills: {

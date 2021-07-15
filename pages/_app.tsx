@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app'
+import 'reflect-metadata'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'devicon/devicon.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'

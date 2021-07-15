@@ -1,4 +1,4 @@
-import { CircleProps } from 'portfolio'
+import { CircleProps } from 'portfolio-web'
 
 const Circle = ({ color }: CircleProps) => {
   const prefix = color === 'red' ? 'emojione' : 'twemoji'

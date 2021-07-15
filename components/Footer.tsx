@@ -1,4 +1,4 @@
-import { FooterProps, FooterSocialsProps } from 'portfolio';
+import { FooterProps, FooterSocialsProps } from 'portfolio-web';
 
 const Footer = ({
   shared_basic_info: sharedBasicInfo,

@@ -1,6 +1,6 @@
 import { VerticalTimelineElement } from 'react-vertical-timeline-component'
 import Badge from 'react-bootstrap/Badge'
-import { WorkMainTechProps, WorkProps, WorkTechProps } from 'portfolio'
+import { WorkMainTechProps, WorkProps, WorkTechProps } from 'portfolio-web'
 
 const Work = ({
   experience: {

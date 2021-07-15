@@ -1,7 +1,7 @@
 // client
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { IndexPageProps } from 'portfolio'
+import { IndexPageProps } from 'portfolio-web'
 import Header from '../components/Header'
 import About from '../components/About'
 import Github from '../components/Github'

@@ -1,4 +1,4 @@
-import { GithubProps } from 'portfolio'
+import { GithubProps } from 'portfolio-web'
 import styles from './Github.module.scss'
 
 const Github = ({ username }: GithubProps) => (

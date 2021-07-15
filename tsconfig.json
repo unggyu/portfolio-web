@@ -14,6 +14,8 @@
     "isolatedModules": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "declaration": true,
+    "declarationDir": "@types",
     "jsx": "preserve",
     "baseUrl": ".",
     "typeRoots": ["node_modules/@types", "@types"],

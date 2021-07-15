@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ProjectProps } from 'portfolio'
+import { ProjectProps } from 'portfolio-web'
 
 const Project = ({
   project,
@@ -22,7 +22,7 @@ const Project = ({
             {images ? (
               <Image
                 className="custom-img"
-                src={images[0].path}
+                src={images[0]}
                 alt="Project image"
                 layout="fill"
                 objectFit="cover"
