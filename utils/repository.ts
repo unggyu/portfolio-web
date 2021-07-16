@@ -1,32 +1,12 @@
-import { Connection, createConnection } from 'typeorm'
-import { ResumeData, SharedData, Project as ClientProject } from 'portfolio-web'
-import { Title, Social, Skill, Project, Experience, RepresentativeSkill, ProjectImage, ProjectTechnology, ExperienceTechnology } from 'entity'
-
-const connect = () => createConnection({
-  type: 'mysql',
-  host: process.env.DB_HOST,
-  port: 3306,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  entities: [
-    Title,
-    Social,
-    Skill,
-    Project,
-    ProjectImage,
-    ProjectTechnology,
-    Experience,
-    ExperienceTechnology,
-    RepresentativeSkill
-  ],
-  synchronize: true
-})
+import { getConnection } from 'typeorm'
+import { ResumeData, SharedData } from 'portfolio-web'
+import { Title, Social, Skill, Project, Experience, RepresentativeSkill } from '../@types/entity'
+import { prepareConnection } from './db'
 
 export const getSharedData = async (): Promise<SharedData> => {
-  let connection: Connection | undefined
   try {
-    connection = await connect()
+    await prepareConnection()
+    const connection = getConnection()
     const titleRepository = connection.getRepository(Title)
     const socialRepository = connection.getRepository(Social)
     const skillRepository = connection.getRepository(Skill)
@@ -39,32 +19,46 @@ export const getSharedData = async (): Promise<SharedData> => {
       basic_info: {
         name: '최웅규',
         titles: titles.map(titles => titles.name),
-        social: socials,
-        image: "/images/myProfile.png"
+        social: socials.map(social => ({
+          name: social.name,
+          url: social.url,
+          class_name: social.class_name
+        })),
+        image: '/images/myProfile.png'
       },
       skills: {
-        icons: skills
+        icons: skills.map(skill => ({
+          name: skill.name,
+          level: skill.level,
+          class_name: skill.class_name
+        }))
       },
       representative_skills: representativeSkills.map(skill => skill.name)
     }
   } catch (err) {
     console.error(err)
     throw err
-  } finally {
-    if (connection && connection.isConnected) {
-      connection.close()
-    }
   }
 }
 
 export const getResumeData = async (): Promise<ResumeData> => {
-  let connection: Connection | undefined
   try {
-    const connection = await connect()
+    await prepareConnection()
+    const connection = getConnection()
     const projectRepository = connection.getRepository(Project)
     const experienceRepository = connection.getRepository(Experience)
-    const projects = await projectRepository.find()
-    const experiences = await experienceRepository.find()
+    const projects = await projectRepository.find({
+      relations: ['images', 'technologies'],
+      order: {
+        start_date: 'DESC'
+      }
+    })
+    const experiences = await experienceRepository.find({
+      relations: ['technologies'],
+      order: {
+        start_date: 'DESC'
+      }
+    })
     return {
       basic_info: {
         description_header: '안녕하세요 👋 :)',
@@ -76,25 +70,30 @@ export const getResumeData = async (): Promise<ResumeData> => {
           experience: 'Experience'
         }
       },
-      projects: projects.map<ClientProject>(project => ({
+      projects: projects.map(project => ({
         title: project.title,
         start_date: project.start_date,
         description: project.description,
         url: project.url,
-        images: project.images?.map(image => image.path),
+        images: project.images?.map(image => image.path) ?? null,
         technologies: project.technologies?.map(tech => ({
           name: tech.name,
           class_name: tech.class_name
-        }))
+        })) ?? null
       })),
-      experience: experiences
+      experience: experiences.map(experience => ({
+        company: experience.company,
+        title: experience.title,
+        start_date: `${experience.start_date.getFullYear()}.${(experience.start_date.getMonth() + 1)}`,
+        end_date: `${experience.end_date.getFullYear()}.${experience.end_date.getMonth() + 1}`,
+        technologies: experience.technologies?.map(tech => ({
+          name: tech.name,
+          is_main: tech.is_main
+        })) ?? null
+      }))
     }
   } catch (err) {
     console.error(err)
     throw err
-  } finally {
-    if (connection && connection.isConnected) {
-      connection.close()
-    }
   }
 }

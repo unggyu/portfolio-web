@@ -44,8 +44,8 @@ declare module 'portfolio-web' {
   export class Experience {
     company: string
     title: string
-    start_date: Date
-    end_date: Date
+    start_date: string
+    end_date: string
     technologies: ExperienceTechnology[]
   }
   export class ExperienceTechnology {
