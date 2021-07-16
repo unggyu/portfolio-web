@@ -12,7 +12,11 @@ export const getSharedData = async (): Promise<SharedData> => {
     const skillRepository = connection.getRepository(Skill)
     const representativeSkillsRepository = connection.getRepository(RepresentativeSkill)
     const titles = await titleRepository.find()
-    const socials = await socialRepository.find()
+    const socials = await socialRepository.find({
+      order: {
+        order: 'ASC'
+      }
+    })
     const skills = await skillRepository.find()
     const representativeSkills = await representativeSkillsRepository.find()
     return {

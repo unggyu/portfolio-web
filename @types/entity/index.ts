@@ -65,6 +65,8 @@ export class Social extends MyEntityBase {
   url: string
   @Column()
   class_name: string
+  @Column()
+  order: number
 }
 @Entity({ name: 'skills' })
 export class Skill extends MyEntityBase {

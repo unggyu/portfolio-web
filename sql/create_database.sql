@@ -57,6 +57,7 @@ CREATE TABLE socials
   name VARCHAR(16) NOT NULL,
   url VARCHAR(64) NOT NULL,
   class_name VARCHAR(32) NOT NULL,
+  `order` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (id)
 );
 

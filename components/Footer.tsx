@@ -1,8 +1,7 @@
 import { FooterProps, FooterSocialsProps } from 'portfolio-web';
 
 const Footer = ({
-  shared_basic_info: sharedBasicInfo,
-  shared_basic_info: { social }
+  shared_basic_info: { name, social }
 }: FooterProps) => (
   <footer>
     <div className="col-md-12">
@@ -14,9 +13,7 @@ const Footer = ({
           <small>
             &copy;{' '}
             {(new Date()).getFullYear()}{'. '}
-            {sharedBasicInfo ?
-              sharedBasicInfo.name :
-              '???'}
+            {name ? name : '???'}
           </small>
         </div>
       </div>
