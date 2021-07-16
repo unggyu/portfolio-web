@@ -9,7 +9,12 @@ const Projects = ({
     section_name: { projects }
   }
 }: ProjectsProps) => {
-  const [deps, setDeps] = useState<Project>(new Project())
+  const [deps, setDeps] = useState<Project>({
+    title: '',
+    start_date: 0,
+    description: '',
+    url: ''
+  })
   const [isModalOpen, setIsModalOpen] = useState(false)
   const sectionName = projects
 

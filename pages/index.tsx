@@ -50,10 +50,10 @@ const IndexPage = ({ shared_data, resume_data }: IndexPageProps) => (
         sharedBasicInfo={shared_data.basic_info}
         representative_skills={shared_data.representative_skills}
       />
-      {/* <Projects
+      <Projects
         resume_projects={resume_data.projects}
         resume_basic_info={resume_data.basic_info}
-      /> */}
+      />
       <Skills
         shared_skills={shared_data.skills}
         resume_basic_info={resume_data.basic_info}

@@ -47,12 +47,16 @@ export const getResumeData = async (): Promise<ResumeData> => {
     const connection = getConnection()
     const projectRepository = connection.getRepository(Project)
     const experienceRepository = connection.getRepository(Experience)
-    const projects = await projectRepository.find({
-      relations: ['images', 'technologies'],
-      order: {
-        start_date: 'DESC'
-      }
-    })
+    const projects = await projectRepository
+      .createQueryBuilder('projects')
+      .leftJoinAndSelect('projects.images', 'images')
+      .leftJoinAndSelect('projects.technologies', 'technologies')
+      .orderBy({
+        'projects.start_date': 'DESC',
+        'images.path': 'ASC',
+        'technologies.id': 'ASC'
+      })
+      .getMany()
     const experiences = await experienceRepository.find({
       relations: ['technologies'],
       order: {
