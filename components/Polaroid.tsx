@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Icon } from '@iconify/react'
 import { PolaroidProps, PolaroidIconsProps } from 'portfolio-web'
-import styles from './Polaroid.module.scss'
+import { PolaroidStyles } from './index'
 import getLogoIcon from '../utils/icon'
 
 const Polaroid = ({
@@ -33,7 +33,7 @@ const Icons = ({ representative_skills: representativeSkills }: PolaroidIconsPro
     {representativeSkills.map((skill, i) => (
       <Icon
         key={i}
-        className={styles.icon}
+        className={PolaroidStyles.icon}
         icon={getLogoIcon(skill)}
       />
     ))}

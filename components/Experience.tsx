@@ -3,7 +3,7 @@ import {
   VerticalTimelineElement
 } from 'react-vertical-timeline-component'
 import { ExperienceProps } from 'portfolio-web'
-import Work from './Work'
+import { Work } from './index'
 
 const Experience = ({
   resume_experience: resumeExperience,

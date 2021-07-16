@@ -1,9 +1,8 @@
 import { Modal } from 'react-bootstrap'
 import AwesomeSlider from 'react-awesome-slider'
-import AwesomeSliderStyles from '../styles/light-slider.module.scss'
-import AwesomeSliderStyles2 from '../styles/dark-slider.module.scss'
 import { ProjectDetailsModalProps, ProjectDetailsModalTechProps } from 'portfolio-web'
-import MacButtons from './MacButtons'
+import { AwesomeSliderStyles, AwesomeSliderStyles2 } from '../styles'
+import { MacButtons } from './index'
 
 const ProjectDetailsModal = ({
   show,

@@ -1,5 +1,5 @@
 import { createConnection, getConnection } from 'typeorm'
-import { Experience, ExperienceTechnology, Project, ProjectImage, ProjectTechnology, RepresentativeSkill, Skill, Social, Title } from '../@types/entity'
+import { Experience, ExperienceTechnology, Project, ProjectImage, ProjectTechnology, RepresentativeSkill, Skill, Social, Title } from './index'
 
 let connectionReadyPromise: Promise<void> | null = null
 

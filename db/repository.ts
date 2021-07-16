@@ -1,9 +1,6 @@
 import { getConnection } from 'typeorm'
 import { ResumeData, SharedData } from 'portfolio-web'
-import { Title, Social, Skill, Project, Experience, RepresentativeSkill } from '../@types/entity'
-import { prepareConnection } from './db'
-import sharedProto from '../datas/shared_proto.json'
-import resumeProto from '../datas/resume_proto.json'
+import { Title, Social, Skill, Project, Experience, RepresentativeSkill, prepareConnection, sharedProto, resumeProto } from './index'
 
 export const getSharedData = async (): Promise<SharedData> => {
   try {

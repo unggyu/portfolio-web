@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { ProjectItemsProps, ProjectsProps, Project } from 'portfolio-web'
-import ProjectDetailsModal from './ProjectDetailsModal'
-import ProjectComponent from './Project'
+import { ProjectDetailsModal, Project as ProjectComponent } from './index'
 
 const Projects = ({
   resume_projects: resumeProjects,

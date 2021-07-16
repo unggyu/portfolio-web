@@ -2,16 +2,10 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { IndexPageProps } from 'portfolio-web'
-import Header from '../components/Header'
-import About from '../components/About'
-import Github from '../components/Github'
-import Projects from '../components/Projects'
-import Skills from '../components/Skills'
-import Experience from '../components/Experience'
-import Footer from '../components/Footer'
+import { Header, About, Github, Projects, Skills, Experience, Footer } from '../components'
 
 // server
-import { getResumeData, getSharedData } from '../utils/repository'
+import { getResumeData, getSharedData } from '../db'
 
 export const getStaticProps: GetStaticProps = async () => {
   try {

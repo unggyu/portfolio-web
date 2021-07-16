@@ -1,6 +1,5 @@
 import { AboutProps } from 'portfolio-web'
-import Polaroid from './Polaroid'
-import MacButtons from './MacButtons'
+import { Polaroid, MacButtons } from './index'
 
 const About = ({
   resumeBasicInfo: {
