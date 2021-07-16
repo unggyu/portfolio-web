@@ -1,13 +1,23 @@
 import { HTMLProps } from 'react'
 
 declare module 'portfolio-web' {
-  export type User = {
-    id: number
-    name: string
+  export class SharedData {
+    basic_info: SharedBasicInfo
+    skills: {
+      icons: Skill[]
+    }
+    representative_skills: string[]
   }
-  export type Technology = {
-    className: string
+  export class SharedBasicInfo {
     name: string
+    titles: string[]
+    social: Social[]
+    image: string
+  }
+  export class ResumeData {
+    basic_info: ResumeBasicInfo
+    projects: Project[]
+    experience: Experience[]
   }
   export type ResumeBasicInfo = {
     description_header: string
@@ -19,64 +29,54 @@ declare module 'portfolio-web' {
       experience: string
     }
   }
-  export type ProjectData = {
+  export class Project {
     title: string
-    startDate: string
+    start_date: number
     description: string
-    images: string[]
     url: string
-    technologies: Technology[]
+    images?: string[]
+    technologies?: ProjectTechnology[]
   }
-  export type ExperienceData = {
+  export class ProjectTechnology {
+    name: string
+    class_name: string
+  }
+  export class Experience {
     company: string
     title: string
-    years: string
-    mainTech: string[]
-    technologies: string[]
+    start_date: string
+    end_date: string
+    technologies: ExperienceTechnology[]
   }
-  export type ResumeData = {
-    basic_info: ResumeBasicInfo
-    projects: ProjectData[]
-    experience: ExperienceData[]
+  export class ExperienceTechnology {
+    name: string
+    is_main: boolean
   }
-  export type Social = {
+  export class Social {
     name: string
     url: string
-    class: string
+    class_name: string
   }
-  export type Icon = {
+  export class Skill {
     name: string
-    className: string
-    level: string
-  }
-  export type SharedBasicInfo = {
-    name: string
-    titles: string[]
-    social: Social[]
-    image: string
-  }
-  export type SharedData = {
-    basic_info: SharedBasicInfo
-    skills: {
-      icons: Icon[]
-    },
-    representative_skills: string[]
+    level: number
+    class_name: string
   }
 
   export type AboutProps = {
     resumeBasicInfo: ResumeBasicInfo
     sharedBasicInfo: SharedBasicInfo
-    representativeSkills: string[]
+    representative_skills: string[]
   }
   export type CircleProps = {
     color: 'red' | 'yellow' | 'green'
   }
   export type ExperienceProps = {
-    resumeExperience: ExperienceData[]
-    resumeBasicInfo: ResumeBasicInfo
+    resume_experience: Experience[]
+    resume_basic_info: ResumeBasicInfo
   }
   export type FooterProps = {
-    sharedBasicInfo: SharedBasicInfo
+    shared_basic_info: SharedBasicInfo
   }
   export type FooterSocialsProps = {
     socials: Social[]
@@ -85,44 +85,44 @@ declare module 'portfolio-web' {
     username: string
   }
   export type HeaderProps = {
-    sharedData: SharedBasicInfo
+    shared_data: SharedBasicInfo
   }
   export type PolaroidProps = HTMLProps<HTMLElement> & {
-    imagePath: string
-    representativeSkills?: string[]
+    image_path: string
+    representative_skills?: string[]
   }
   export type PolaroidIconsProps = {
-    representativeSkills: string[]
+    representative_skills: string[]
   }
   export type ProjectProps = {
-    project: ProjectData
-    onClick(project: ProjectData): void
+    project: Project
+    onClick(project: Project): void
   }
   export type ProjectDetailsModalProps = {
     show: boolean
-    data: ProjectData
+    data: Project
     onHide(): void
   }
   export type ProjectDetailsModalTechProps = {
-    technologies: Technology[]
+    technologies: ProjectTechnology[]
   }
   export type ProjectsProps = {
-    resumeProjects: ProjectData[]
-    resumeBasicInfo: ResumeBasicInfo
+    resume_projects: Project[]
+    resume_basic_info: ResumeBasicInfo
   }
   export type ProjectItemsProps = {
-    projects: ProjectData[]
-    onItemClick(project: ProjectData): void
+    projects: Project[]
+    onItemClick(project: Project): void
   }
   export type SkillsProps = {
-    sharedSkills: SharedData['skills'],
-    resumeBasicInfo: ResumeBasicInfo
+    shared_skills: SharedData['skills'],
+    resume_basic_info: ResumeBasicInfo
   }
   export type SkillProps = {
-    icon: Icon
+    icon: Skill
   }
   export type WorkProps = {
-    experience: ExperienceData
+    experience: Experience
   }
   export type WorkMainTechProps = {
     technologies: string[]
@@ -132,8 +132,8 @@ declare module 'portfolio-web' {
   }
 
   export type IndexPageProps = {
-    sharedData: SharedData
-    resumeData: ResumeData
+    shared_data: SharedData
+    resume_data: ResumeData
     errors?: string
   }
 }

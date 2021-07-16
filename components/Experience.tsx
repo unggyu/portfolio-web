@@ -6,8 +6,8 @@ import { ExperienceProps } from 'portfolio-web'
 import { Work } from './index'
 
 const Experience = ({
-  resumeExperience,
-  resumeBasicInfo: {
+  resume_experience: resumeExperience,
+  resume_basic_info: {
     section_name: {
       experience
     }

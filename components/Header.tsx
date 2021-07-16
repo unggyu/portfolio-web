@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import Typical from 'react-typical'
 import Switch from 'react-switch'
 import { HeaderProps } from 'portfolio-web'
-import { useWindowSize } from '../utils/hooks'
+import { useWindowSize } from '../utils'
 
-const Header = ({ sharedData }: HeaderProps) => {
+const Header = ({ shared_data: sharedData }: HeaderProps) => {
   const [checked, setChecked] = useState(false)
   const windowSize = useWindowSize()
 

@@ -1,15 +1,15 @@
 import { GithubProps } from 'portfolio-web'
-import styles from './Github.module.scss'
+import { GithubStyles } from './index'
 
 const Github = ({ username }: GithubProps) => (
   <a
-    className={styles.githubCorner}
+    className={GithubStyles.githubCorner}
     href={`https://github.com/${username}`}
     target="_blank"
     aria-label="go to Github"
   >
     <svg
-      className={styles.svg}
+      className={GithubStyles.svg}
       width={90}
       height={90}
       viewBox="0 0 250 250"
@@ -17,7 +17,7 @@ const Github = ({ username }: GithubProps) => (
     >
       <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
       <path
-        className={styles.octoArm}
+        className={GithubStyles.octoArm}
         d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
         fill="currentColor"
       />

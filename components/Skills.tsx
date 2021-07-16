@@ -1,10 +1,10 @@
 import { SkillProps, SkillsProps } from 'portfolio-web'
 
 const Skills = ({
-  sharedSkills: {
+  shared_skills: {
     icons
   },
-  resumeBasicInfo: {
+  resume_basic_info: {
     section_name: {
       skills
     }
@@ -30,7 +30,7 @@ const Skills = ({
 
 const Skill = ({
   icon: {
-    className,
+    class_name: className,
     name
   }
 }: SkillProps) => (

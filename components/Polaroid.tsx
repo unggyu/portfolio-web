@@ -1,10 +1,15 @@
 import Image from 'next/image'
 import { Icon } from '@iconify/react'
 import { PolaroidProps, PolaroidIconsProps } from 'portfolio-web'
-import styles from './Polaroid.module.scss'
+import { PolaroidStyles } from './index'
 import getLogoIcon from '../utils/icon'
 
-const Polaroid = ({ imagePath, representativeSkills, style }: PolaroidProps) => (
+const Polaroid = ({
+  image_path: imagePath,
+  representative_skills:
+  representativeSkills,
+  style
+}: PolaroidProps) => (
   <div className="polaroid" style={style}>
     <span style={{ cursor: 'auto' }}>
       <div className="unset-img">
@@ -17,18 +22,18 @@ const Polaroid = ({ imagePath, representativeSkills, style }: PolaroidProps) => 
         />
       </div>
       {representativeSkills ?
-        <Icons representativeSkills={representativeSkills} /> :
+        <Icons representative_skills={representativeSkills} /> :
         null}
     </span>
   </div>
 )
 
-const Icons = ({ representativeSkills }: PolaroidIconsProps) => (
+const Icons = ({ representative_skills: representativeSkills }: PolaroidIconsProps) => (
   <>
     {representativeSkills.map((skill, i) => (
       <Icon
         key={i}
-        className={styles.icon}
+        className={PolaroidStyles.icon}
         icon={getLogoIcon(skill)}
       />
     ))}
