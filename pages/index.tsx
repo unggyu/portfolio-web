@@ -1,32 +1,37 @@
 // client
-import { GetStaticProps } from 'next'
+import { GetStaticProps, GetStaticPropsContext, NextPage } from 'next'
 import Head from 'next/head'
 import { IndexPageProps } from 'portfolio-web'
-import { Header, About, Github, Projects, Skills, Experience, Footer } from '../components'
+import wrapper from '../store/store'
+import {
+  Header,
+  About,
+  Github,
+  Projects,
+  Skills,
+  Experience,
+  Footer,
+} from '../components'
 
 // server
-import { getResumeData, getSharedData } from '../db'
+import {
+  getTitles,
+  getSocials,
+  getSkills,
+  getRepresentativeSkills,
+  getProjects,
+  getExperiences,
+} from '../db'
+import { connect } from 'react-redux'
 
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const shared_data = await getSharedData()
-    const resume_data = await getResumeData()
-    return {
-      props: {
-        shared_data,
-        resume_data
-      }
-    }
-  } catch (err) {
-    return {
-      props: {
-        errors: err.message
-      }
-    }
-  }
-}
+export const getStaticProps = wrapper.getStaticProps((store) => () => {
+  store.dispatch()
+})
 
-const IndexPage = ({ shared_data, resume_data }: IndexPageProps) => (
+const IndexPage: NextPage<IndexPageProps> = ({
+  shared_data,
+  resume_data,
+}: IndexPageProps) => (
   <>
     <Head>
       <title>Unggyu-Choi | Front-end Developer</title>
@@ -61,4 +66,4 @@ const IndexPage = ({ shared_data, resume_data }: IndexPageProps) => (
   </>
 )
 
-export default IndexPage
+export default connect()(IndexPage)

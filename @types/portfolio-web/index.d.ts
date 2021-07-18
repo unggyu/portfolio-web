@@ -1,6 +1,15 @@
 import { HTMLProps } from 'react'
+import { AppProps } from 'next/app'
+import { AnyAction, Store } from 'redux'
 
 declare module 'portfolio-web' {
+  export type State = {
+    app: AppState
+  }
+  export type AppState = {
+    resume_data: ResumeData
+    shared_data: SharedData
+  }
   export class SharedData {
     basic_info: SharedBasicInfo
     skills: {
@@ -115,7 +124,7 @@ declare module 'portfolio-web' {
     onItemClick(project: Project): void
   }
   export type SkillsProps = {
-    shared_skills: SharedData['skills'],
+    shared_skills: SharedData['skills']
     resume_basic_info: ResumeBasicInfo
   }
   export type SkillProps = {
@@ -136,4 +145,43 @@ declare module 'portfolio-web' {
     resume_data: ResumeData
     errors?: string
   }
+
+  export type AppAction =
+    | AnyAction
+    | {
+        type: 'app/ADD_PROJECTS'
+        payload: {
+          projects: Project[]
+        }
+      }
+    | {
+        type: 'app/ADD_EXPERIENCES'
+        payload: {
+          experiences: Experience[]
+        }
+      }
+    | {
+        type: 'app/ADD_TITLES'
+        payload: {
+          titles: string[]
+        }
+      }
+    | {
+        type: 'app/ADD_SOCIALS'
+        payload: {
+          socials: Social[]
+        }
+      }
+    | {
+        type: 'app/ADD_SKILLS'
+        payload: {
+          skills: Skill[]
+        }
+      }
+    | {
+        type: 'app/ADD_REPRESENTATIVE_SKILLS'
+        payload: {
+          skills: RepresentativeSkill[]
+        }
+      }
 }
