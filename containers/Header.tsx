@@ -1,3 +1,5 @@
+import { Dispatch } from 'redux'
+import { connect } from 'react-redux'
 import {
   AppAction,
   AppState,
@@ -5,9 +7,7 @@ import {
   HeaderProps,
   Theme,
 } from 'portfolio-web'
-import { connect } from 'react-redux'
 import { Header } from 'components'
-import { Dispatch } from 'redux'
 
 export default connect(
   ({

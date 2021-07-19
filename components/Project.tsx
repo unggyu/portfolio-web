@@ -3,12 +3,8 @@ import { ProjectProps } from 'portfolio-web'
 
 const Project = ({
   project,
-  project: {
-    title,
-    images,
-    start_date: startDate
-  },
-  onClick
+  project: { title, images, start_date: startDate },
+  onClick,
 }: ProjectProps) => (
   <div
     className="col-sm-12 col-md-6 col-lg-4 mx-auto"
@@ -16,7 +12,7 @@ const Project = ({
     style={{ cursor: 'pointer' }}
   >
     <span className="portfolio-item d-block">
-      <div className="foto" onClick={() => onClick(project)}>
+      <div className="foto" onClick={() => (onClick ? onClick(project) : null)}>
         <div>
           <div className="unset-img">
             {images ? (
@@ -31,9 +27,7 @@ const Project = ({
           </div>
           <span className="project-date">{startDate}</span>
           <br />
-          <p className="project-title-settings mt-3">
-            {title}
-          </p>
+          <p className="project-title-settings mt-3">{title}</p>
         </div>
       </div>
     </span>

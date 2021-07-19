@@ -1,6 +1,6 @@
-import { Skills } from 'components'
-import { AppState, SkillsProps } from 'portfolio-web'
 import { connect } from 'react-redux'
+import { AppState, SkillsProps } from 'portfolio-web'
+import { Skills } from 'components'
 
 export default connect(
   ({

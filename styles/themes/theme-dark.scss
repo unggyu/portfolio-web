@@ -1,4 +1,4 @@
-body > div > div[data-theme='dark'] {
+body[data-theme='dark'] {
   @import '../dark-slider.module.scss';
 
   .slider-tab {

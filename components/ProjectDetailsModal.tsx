@@ -1,6 +1,9 @@
 import { Modal } from 'react-bootstrap'
 import AwesomeSlider from 'react-awesome-slider'
-import { ProjectDetailsModalProps, ProjectDetailsModalTechProps } from 'portfolio-web'
+import {
+  ProjectDetailsModalProps,
+  ProjectDetailsModalTechProps,
+} from 'portfolio-web'
 import { AwesomeSliderStyles, AwesomeSliderStyles2 } from '../styles'
 import { MacButtons } from './index'
 
@@ -8,13 +11,6 @@ const ProjectDetailsModal = ({
   show,
   onHide,
   data,
-  data: {
-    images,
-    title,
-    url,
-    description,
-    technologies
-  }
 }: ProjectDetailsModalProps) => (
   <Modal
     show={show}
@@ -38,17 +34,17 @@ const ProjectDetailsModal = ({
           animation="scaleOutAnimation"
           className="slider-image"
         >
-          {images ? images.map((elem, i) => (
-            <div key={i} data-src={elem} />
-          )) : null}
+          {data && data.images
+            ? data.images.map((elem, i) => <div key={i} data-src={elem} />)
+            : null}
         </AwesomeSlider>
       </div>
       <div className="col-md-10 mx-auto">
         <h3 style={{ padding: '5px 5px 0 5px' }}>
-          {title}
-          {url ? (
+          {data ? data.title : null}
+          {data && data.url ? (
             <a
-              href={url}
+              href={data.url}
               target="_blank"
               rel="noopener noreferrer"
               className="link-href"
@@ -60,10 +56,12 @@ const ProjectDetailsModal = ({
             </a>
           ) : null}
         </h3>
-        <p className="modal-description">{description}</p>
+        <p className="modal-description">{data ? data.description : null}</p>
         <div className="col-md-12 text-center">
           <ul className="list-inline mx-auto">
-            {technologies ? <Tech technologies={technologies} /> : null}
+            {data && data.technologies ? (
+              <Tech technologies={data.technologies} />
+            ) : null}
           </ul>
         </div>
       </div>

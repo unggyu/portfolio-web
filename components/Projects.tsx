@@ -1,28 +1,19 @@
-import { useState } from 'react'
-import { ProjectItemsProps, ProjectsProps, Project } from 'portfolio-web'
-import { ProjectDetailsModal, Project as ProjectComponent } from './index'
+import {
+  ProjectItemsProps,
+  ProjectsProps,
+  Project as ProjectData,
+} from 'portfolio-web'
+import { Project } from 'components'
+import { ProjectDetailsModal } from 'containers'
 
 const Projects = ({
   resume_projects: resumeProjects,
   resume_basic_info: {
-    section_name: { projects }
-  }
+    section_name: { projects },
+  },
+  onClickProject,
 }: ProjectsProps) => {
-  const [deps, setDeps] = useState<Project>({
-    title: '',
-    start_date: 0,
-    description: '',
-    url: ''
-  })
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const sectionName = projects
-
-  const detailsModalShow = (project: Project) => {
-    setDeps(project)
-    setIsModalOpen(true)
-  }
-
-  const detailsModalClose = () => setIsModalOpen(false)
 
   return (
     <section id="portfolio">
@@ -32,14 +23,10 @@ const Projects = ({
         </h1>
         <div className="col-md-12 mx-auto">
           <div className="row mx-auto">
-            <Items projects={resumeProjects} onItemClick={detailsModalShow} />
+            <Items projects={resumeProjects} onItemClick={onClickProject} />
           </div>
         </div>
-        <ProjectDetailsModal
-          show={isModalOpen}
-          onHide={detailsModalClose}
-          data={deps}
-        />
+        <ProjectDetailsModal />
       </div>
     </section>
   )
@@ -48,11 +35,7 @@ const Projects = ({
 const Items = ({ projects, onItemClick }: ProjectItemsProps) => (
   <>
     {projects.map((project, i) => (
-      <ProjectComponent
-        key={i}
-        project={project}
-        onClick={onItemClick}
-      />
+      <Project key={i} project={project} onClick={onItemClick} />
     ))}
   </>
 )

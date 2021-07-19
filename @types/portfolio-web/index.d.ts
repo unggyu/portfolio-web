@@ -19,14 +19,16 @@ declare module 'portfolio-web' {
     shared_data: SharedData
     theme: Theme
     screenHeight: number
+    isProjectModalOpen: boolean
+    selectedProject: Project
   }
   export type IndexPageStaticProps = {
     props: MyPageProps
   }
-  export type IndexPageProps = MyPageProps & {
-    onResize?(width: number)
+  export type IndexPageEvents = {
+    onResize?(width: number): void
   }
-
+  export type IndexPageProps = MyPageProps & IndexPageEvents
   export type SharedData = {
     basic_info: SharedBasicInfo
     skills: {
@@ -36,9 +38,10 @@ declare module 'portfolio-web' {
   }
   export type SharedBasicInfo = {
     name: string
+    image: string
+    github: string
     titles: string[]
     social: Social[]
-    image: string
   }
   export type ResumeData = {
     basic_info: ResumeBasicInfo
@@ -88,7 +91,6 @@ declare module 'portfolio-web' {
     level: number
     class_name: string
   }
-
   export type AboutProps = {
     resumeBasicInfo: ResumeBasicInfo
     sharedBasicInfo: SharedBasicInfo
@@ -131,25 +133,34 @@ declare module 'portfolio-web' {
   export type PolaroidIconsProps = {
     representative_skills: string[]
   }
-  export type ProjectProps = {
-    project: Project
-    onClick(project: Project): void
+  export type ProjectEvents = {
+    onClick?(project: Project): void
   }
-  export type ProjectDetailsModalProps = {
+  export type ProjectProps = ProjectEvents & {
+    project: Project
+  }
+  export type ProjectDetailsModalEvents = {
+    onHide?(): void
+  }
+  export type ProjectDetailsModalProps = ProjectDetailsModalEvents & {
     show: boolean
-    data: Project
-    onHide(): void
+    data?: Project
   }
   export type ProjectDetailsModalTechProps = {
     technologies: ProjectTechnology[]
   }
-  export type ProjectsProps = {
+  export type ProjectsEvents = {
+    onClickProject?(project: Project): void
+  }
+  export type ProjectsProps = ProjectsEvents & {
     resume_projects: Project[]
     resume_basic_info: ResumeBasicInfo
   }
-  export type ProjectItemsProps = {
+  export type ProjectItemsEvents = {
+    onItemClick?(project: Project): void
+  }
+  export type ProjectItemsProps = ProjectItemsEvents & {
     projects: Project[]
-    onItemClick(project: Project): void
   }
   export type SkillsProps = {
     shared_skills: SharedData['skills']
@@ -167,7 +178,6 @@ declare module 'portfolio-web' {
   export type WorkTechProps = {
     technologies: string[]
   }
-
   export type AppAction =
     | {
         type: 'app/ADD_PROJECTS'
@@ -216,5 +226,15 @@ declare module 'portfolio-web' {
         payload: {
           theme: Theme
         }
+      }
+    | {
+        type: 'OPEN_PROJECT_MODAL'
+        payload: {
+          project: Project
+        }
+      }
+    | {
+        type: 'CLOSE_PROJECT_MODAL'
+        payload: {}
       }
 }

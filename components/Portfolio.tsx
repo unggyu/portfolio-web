@@ -1,11 +1,25 @@
 import { PortfolioProps } from 'portfolio-web'
-import { Github } from 'components'
-import { Header, About, Projects, Skills, Experience, Footer } from 'containers'
+import {
+  Github,
+  Header,
+  About,
+  Projects,
+  Skills,
+  Experience,
+  Footer,
+} from 'containers'
 
 const Portfolio = ({ theme }: PortfolioProps) => {
+  if (typeof document === 'object') {
+    const body = document.querySelector('body')
+    if (body) {
+      body.setAttribute('data-theme', theme)
+    }
+  }
+
   return (
-    <div data-theme={theme}>
-      <Github username="unggyu" />
+    <div>
+      <Github />
       <Header />
       <About />
       <Projects />

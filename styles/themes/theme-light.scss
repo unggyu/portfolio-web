@@ -1,4 +1,4 @@
-body > div > div[data-theme='light'] {
+body[data-theme='light'] {
   @import '../light-slider.module.scss';
 
   .slider-tab {
