@@ -1,20 +1,46 @@
 import { HTMLProps } from 'react'
+import { AppProps } from 'next/app'
+import { AnyAction, Store } from 'redux'
 
 declare module 'portfolio-web' {
-  export class SharedData {
+  export type Theme = 'light' | 'dark'
+  export type MyAppProps = AppProps
+  export type MyPageProps =
+    | {
+        isError: false
+        initialReduxState: AppState
+      }
+    | {
+        isError: true
+        errors: string
+      }
+  export type AppState = {
+    resume_data: ResumeData
+    shared_data: SharedData
+    theme: Theme
+    screenHeight: number
+  }
+  export type IndexPageStaticProps = {
+    props: MyPageProps
+  }
+  export type IndexPageProps = MyPageProps & {
+    onResize?(width: number)
+  }
+
+  export type SharedData = {
     basic_info: SharedBasicInfo
     skills: {
       icons: Skill[]
     }
     representative_skills: string[]
   }
-  export class SharedBasicInfo {
+  export type SharedBasicInfo = {
     name: string
     titles: string[]
     social: Social[]
     image: string
   }
-  export class ResumeData {
+  export type ResumeData = {
     basic_info: ResumeBasicInfo
     projects: Project[]
     experience: Experience[]
@@ -72,8 +98,8 @@ declare module 'portfolio-web' {
     color: 'red' | 'yellow' | 'green'
   }
   export type ExperienceProps = {
-    resume_experience: Experience[]
     resume_basic_info: ResumeBasicInfo
+    resume_experience: Experience[]
   }
   export type FooterProps = {
     shared_basic_info: SharedBasicInfo
@@ -84,12 +110,23 @@ declare module 'portfolio-web' {
   export type GithubProps = {
     username: string
   }
-  export type HeaderProps = {
+  export type HeaderEvents = {
+    onThemeChanged?(theme: Theme): void
+  }
+  export type HeaderProps = HeaderEvents & {
     shared_data: SharedBasicInfo
+    theme: Theme
+    screenHeight: number
+  }
+  export type HeaderState = {
+    theme: Theme
   }
   export type PolaroidProps = HTMLProps<HTMLElement> & {
     image_path: string
     representative_skills?: string[]
+  }
+  export type PortfolioProps = {
+    theme: Theme
   }
   export type PolaroidIconsProps = {
     representative_skills: string[]
@@ -115,7 +152,7 @@ declare module 'portfolio-web' {
     onItemClick(project: Project): void
   }
   export type SkillsProps = {
-    shared_skills: SharedData['skills'],
+    shared_skills: SharedData['skills']
     resume_basic_info: ResumeBasicInfo
   }
   export type SkillProps = {
@@ -131,9 +168,53 @@ declare module 'portfolio-web' {
     technologies: string[]
   }
 
-  export type IndexPageProps = {
-    shared_data: SharedData
-    resume_data: ResumeData
-    errors?: string
-  }
+  export type AppAction =
+    | {
+        type: 'app/ADD_PROJECTS'
+        payload: {
+          projects: Project[]
+        }
+      }
+    | {
+        type: 'app/ADD_EXPERIENCES'
+        payload: {
+          experiences: Experience[]
+        }
+      }
+    | {
+        type: 'app/ADD_TITLES'
+        payload: {
+          titles: string[]
+        }
+      }
+    | {
+        type: 'app/ADD_SOCIALS'
+        payload: {
+          socials: Social[]
+        }
+      }
+    | {
+        type: 'app/ADD_SKILLS'
+        payload: {
+          skills: Skill[]
+        }
+      }
+    | {
+        type: 'app/ADD_REPRESENTATIVE_SKILLS'
+        payload: {
+          skills: string[]
+        }
+      }
+    | {
+        type: 'SCREEN_REISZE'
+        payload: {
+          screenHeight: number
+        }
+      }
+    | {
+        type: 'CHANGE_THEME'
+        payload: {
+          theme: Theme
+        }
+      }
 }
