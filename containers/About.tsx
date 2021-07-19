@@ -1,6 +1,6 @@
-import { About } from 'components'
-import { AboutProps, AppState } from 'portfolio-web'
 import { connect } from 'react-redux'
+import { AboutProps, AppState } from 'portfolio-web'
+import { About } from 'components'
 
 export default connect((state: AppState): AboutProps => {
   return {

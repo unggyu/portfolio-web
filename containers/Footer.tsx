@@ -1,6 +1,6 @@
-import { Footer } from 'components'
-import { AppState, FooterProps } from 'portfolio-web'
 import { connect } from 'react-redux'
+import { AppState, FooterProps } from 'portfolio-web'
+import { Footer } from 'components'
 
 export default connect(
   ({ shared_data: { basic_info } }: AppState): FooterProps => {

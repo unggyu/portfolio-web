@@ -25,6 +25,7 @@ export const initialState: AppState = {
     basic_info: {
       name: '최웅규',
       image: '/images/myProfile.png',
+      github: 'unggyu',
       titles: [],
       social: [],
     },
@@ -35,6 +36,13 @@ export const initialState: AppState = {
   },
   theme: 'dark',
   screenHeight: typeof window === 'object' ? window.innerWidth : 0,
+  isProjectModalOpen: false,
+  selectedProject: {
+    title: '',
+    start_date: 0,
+    description: '',
+    url: '',
+  },
 }
 
 export function reducer(
@@ -109,6 +117,18 @@ export function reducer(
         ...state,
         theme: action.payload.theme,
       }
+    case 'OPEN_PROJECT_MODAL':
+      return {
+        ...state,
+        isProjectModalOpen: true,
+        selectedProject: action.payload.project,
+      }
+    case 'CLOSE_PROJECT_MODAL': {
+      return {
+        ...state,
+        isProjectModalOpen: false,
+      }
+    }
     default:
       return state
   }

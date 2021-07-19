@@ -1,6 +1,13 @@
 import { PortfolioProps } from 'portfolio-web'
-import { Github } from 'components'
-import { Header, About, Projects, Skills, Experience, Footer } from 'containers'
+import {
+  Github,
+  Header,
+  About,
+  Projects,
+  Skills,
+  Experience,
+  Footer,
+} from 'containers'
 
 const Portfolio = ({ theme }: PortfolioProps) => {
   if (typeof document === 'object') {
@@ -12,7 +19,7 @@ const Portfolio = ({ theme }: PortfolioProps) => {
 
   return (
     <div>
-      <Github username="unggyu" />
+      <Github />
       <Header />
       <About />
       <Projects />
