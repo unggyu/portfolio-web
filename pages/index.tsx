@@ -1,17 +1,11 @@
 // client
-import { GetStaticProps, GetStaticPropsContext, NextPage } from 'next'
+import { NextPage } from 'next'
 import Head from 'next/head'
-import { IndexPageProps } from 'portfolio-web'
-import wrapper from '../store/store'
-import {
-  Header,
-  About,
-  Github,
-  Projects,
-  Skills,
-  Experience,
-  Footer,
-} from '../components'
+import { Dispatch } from 'redux'
+import { AppAction, IndexPageProps, IndexPageStaticProps } from 'portfolio-web'
+import { initialState } from 'store'
+import { Github } from 'components'
+import { Portfolio } from 'containers'
 
 // server
 import {
@@ -21,49 +15,94 @@ import {
   getRepresentativeSkills,
   getProjects,
   getExperiences,
-} from '../db'
+} from 'db'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-export const getStaticProps = wrapper.getStaticProps((store) => () => {
-  store.dispatch()
-})
+export async function getStaticProps(): Promise<IndexPageStaticProps> {
+  try {
+    const titles = await getTitles()
+    const socials = await getSocials()
+    const skills = await getSkills()
+    const representative_skills = await getRepresentativeSkills()
+    const projects = await getProjects()
+    const experiences = await getExperiences()
+    return {
+      props: {
+        isError: false,
+        initialReduxState: {
+          ...initialState,
+          resume_data: {
+            ...initialState.resume_data,
+            projects,
+            experience: experiences,
+          },
+          shared_data: {
+            basic_info: {
+              ...initialState.shared_data.basic_info,
+              titles,
+              social: socials,
+            },
+            skills: {
+              icons: skills,
+            },
+            representative_skills,
+          },
+        },
+      },
+    }
+  } catch (e) {
+    return {
+      props: { isError: true, errors: e.message },
+    }
+  }
+}
 
-const IndexPage: NextPage<IndexPageProps> = ({
-  shared_data,
-  resume_data,
-}: IndexPageProps) => (
-  <>
-    <Head>
-      <title>Unggyu-Choi | Front-end Developer</title>
-      <meta charSet="utf-8" />
-      <link rel="icon" href="favicon.ico" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="theme-color" content="#000000" />
-      <link rel="manifest" href="manifest.json" />
-    </Head>
-    <Github username="unggyu" />
-    <div>
-      <Header shared_data={shared_data.basic_info} />
-      <About
-        resumeBasicInfo={resume_data.basic_info}
-        sharedBasicInfo={shared_data.basic_info}
-        representative_skills={shared_data.representative_skills}
-      />
-      <Projects
-        resume_projects={resume_data.projects}
-        resume_basic_info={resume_data.basic_info}
-      />
-      <Skills
-        shared_skills={shared_data.skills}
-        resume_basic_info={resume_data.basic_info}
-      />
-      <Experience
-        resume_experience={resume_data.experience}
-        resume_basic_info={resume_data.basic_info}
-      />
-      <Footer shared_basic_info={shared_data.basic_info} />
-    </div>
-  </>
-)
+const IndexPage: NextPage<IndexPageProps> = (props: IndexPageProps) => {
+  useEffect(() => {
+    function handleResize() {
+      if (props.onResize) {
+        props.onResize(window.innerHeight)
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    handleResize()
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
-export default connect()(IndexPage)
+  if (!props.isError) {
+    const {
+      initialReduxState: { theme },
+    } = props
+    return (
+      <>
+        <Head>
+          <title>Unggyu-Choi | Front-end Developer</title>
+          <meta charSet="utf-8" />
+          <link rel="icon" href="favicon.ico" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#000000" />
+          <link rel="manifest" href="manifest.json" />
+        </Head>
+        <Portfolio />
+      </>
+    )
+  } else {
+    return <div>{props.errors}</div>
+  }
+}
+
+export default connect(null, (dispatch: Dispatch<AppAction>) => {
+  return {
+    onResize: (screenHeight: number) => {
+      dispatch({
+        type: 'SCREEN_REISZE',
+        payload: {
+          screenHeight,
+        },
+      })
+    },
+  }
+})(IndexPage)

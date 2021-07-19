@@ -1,6 +1,11 @@
+import { useMemo } from 'react'
+import { applyMiddleware, createStore, Store } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { AppAction, AppState } from 'portfolio-web'
 
-const initialState: AppState = {
+let store: Store<AppState, AppAction> | undefined
+
+export const initialState: AppState = {
   resume_data: {
     basic_info: {
       description_header: '안녕하세요 👋 :)',
@@ -28,9 +33,14 @@ const initialState: AppState = {
     },
     representative_skills: [],
   },
+  theme: 'dark',
+  screenHeight: typeof window === 'object' ? window.innerWidth : 0,
 }
 
-export function appReducer(state = initialState, action: AppAction) {
+export function reducer(
+  state: AppState = initialState,
+  action: AppAction
+): AppState {
   switch (action.type) {
     case 'app/ADD_PROJECTS':
       return {
@@ -42,6 +52,7 @@ export function appReducer(state = initialState, action: AppAction) {
       }
     case 'app/ADD_EXPERIENCES':
       return {
+        ...state,
         resume_data: {
           ...state.resume_data,
           experience: action.payload.experiences,
@@ -66,7 +77,7 @@ export function appReducer(state = initialState, action: AppAction) {
           ...state.shared_data,
           basic_info: {
             ...state.shared_data.basic_info,
-            socials: action.payload.socials,
+            social: action.payload.socials,
           },
         },
       }
@@ -88,7 +99,52 @@ export function appReducer(state = initialState, action: AppAction) {
           representative_skills: action.payload.skills,
         },
       }
+    case 'SCREEN_REISZE':
+      return {
+        ...state,
+        screenHeight: action.payload.screenHeight,
+      }
+    case 'CHANGE_THEME':
+      return {
+        ...state,
+        theme: action.payload.theme,
+      }
     default:
       return state
   }
+}
+
+function initStore(preloadedState = initialState) {
+  return createStore(
+    reducer,
+    preloadedState,
+    composeWithDevTools(applyMiddleware())
+  )
+}
+
+export function initializeStore(preloadedState?: AppState) {
+  let _store = store ?? initStore(preloadedState)
+
+  // After navigating to a page with an initial Redux state, merge that state
+  // with the current state in the store, and create a new store
+  if (preloadedState && store) {
+    _store = initStore({
+      ...store.getState(),
+      ...preloadedState,
+    })
+    // Reset the current store
+    store = undefined
+  }
+
+  // For SSG and SSR always create a new store
+  if (typeof window === 'undefined') return _store
+  // Create the store once in the client
+  if (!store) store = _store
+
+  return _store
+}
+
+export function useStore(initialState: AppState) {
+  const store = useMemo(() => initializeStore(initialState), [initialState])
+  return store
 }
