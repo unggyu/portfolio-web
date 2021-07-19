@@ -2,9 +2,13 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { Dispatch } from 'redux'
-import { AppAction, IndexPageProps, IndexPageStaticProps } from 'portfolio-web'
+import {
+  AppAction,
+  IndexPageEvents,
+  IndexPageProps,
+  IndexPageStaticProps,
+} from 'portfolio-web'
 import { initialState } from 'store'
-import { Github } from 'components'
 import { Portfolio } from 'containers'
 
 // server
@@ -73,9 +77,6 @@ const IndexPage: NextPage<IndexPageProps> = (props: IndexPageProps) => {
   }, [])
 
   if (!props.isError) {
-    const {
-      initialReduxState: { theme },
-    } = props
     return (
       <>
         <Head>
@@ -94,15 +95,18 @@ const IndexPage: NextPage<IndexPageProps> = (props: IndexPageProps) => {
   }
 }
 
-export default connect(null, (dispatch: Dispatch<AppAction>) => {
-  return {
-    onResize: (screenHeight: number) => {
-      dispatch({
-        type: 'SCREEN_REISZE',
-        payload: {
-          screenHeight,
-        },
-      })
-    },
+export default connect(
+  null,
+  (dispatch: Dispatch<AppAction>): IndexPageEvents => {
+    return {
+      onResize: (screenHeight: number) => {
+        dispatch({
+          type: 'SCREEN_REISZE',
+          payload: {
+            screenHeight,
+          },
+        })
+      },
+    }
   }
-})(IndexPage)
+)(IndexPage)

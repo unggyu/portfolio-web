@@ -23,10 +23,10 @@ declare module 'portfolio-web' {
   export type IndexPageStaticProps = {
     props: MyPageProps
   }
-  export type IndexPageProps = MyPageProps & {
+  export type IndexPageEvents = {
     onResize?(width: number)
   }
-
+  export type IndexPageProps = MyPageProps & IndexPageEvents
   export type SharedData = {
     basic_info: SharedBasicInfo
     skills: {
@@ -88,7 +88,6 @@ declare module 'portfolio-web' {
     level: number
     class_name: string
   }
-
   export type AboutProps = {
     resumeBasicInfo: ResumeBasicInfo
     sharedBasicInfo: SharedBasicInfo
@@ -167,7 +166,6 @@ declare module 'portfolio-web' {
   export type WorkTechProps = {
     technologies: string[]
   }
-
   export type AppAction =
     | {
         type: 'app/ADD_PROJECTS'
