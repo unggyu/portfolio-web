@@ -7,7 +7,9 @@ import 'devicon/devicon.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import 'react-vertical-timeline-component/style.min.css'
 import '@iconify/iconify'
+import 'styles/index.scss'
 import 'styles/app.scss'
+import 'styles/custom-font/style.css'
 
 // This default export is required in a new `pages/_app.tsx` file.
 function MyApp({ Component, pageProps }: MyAppProps) {

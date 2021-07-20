@@ -15,7 +15,7 @@ const Project = ({
       <div className="foto" onClick={() => (onClick ? onClick(project) : null)}>
         <div>
           <div className="unset-img">
-            {images ? (
+            {images && images.length !== 0 ? (
               <Image
                 className="custom-img"
                 src={images[0]}
