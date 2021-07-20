@@ -67,6 +67,7 @@ CREATE TABLE skills
   name VARCHAR(16) NOT NULL,
   class_name VARCHAR(32) NOT NULL,
   level INT(11) NOT NULL,
+  `order` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (id)
 );
 

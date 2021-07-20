@@ -54,7 +54,11 @@ export async function getSkills(): Promise<ClientSkill[]> {
     await prepareConnection()
     const connection = getConnection()
     const skillRepository = connection.getRepository(Skill)
-    const skills = await skillRepository.find()
+    const skills = await skillRepository.find({
+      order: {
+        order: 'ASC',
+      },
+    })
     return skills.map((skill) => ({
       name: skill.name,
       level: skill.level,

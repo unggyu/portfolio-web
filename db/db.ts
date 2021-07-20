@@ -1,5 +1,15 @@
 import { createConnection, getConnection } from 'typeorm'
-import { Experience, ExperienceTechnology, Project, ProjectImage, ProjectTechnology, RepresentativeSkill, Skill, Social, Title } from './index'
+import {
+  Experience,
+  ExperienceTechnology,
+  Project,
+  ProjectImage,
+  ProjectTechnology,
+  RepresentativeSkill,
+  Skill,
+  Social,
+  Title,
+} from './index'
 
 let connectionReadyPromise: Promise<void> | null = null
 
@@ -30,7 +40,7 @@ export function prepareConnection() {
           ProjectTechnology,
           Experience,
           ExperienceTechnology,
-          RepresentativeSkill
+          RepresentativeSkill,
         ],
         synchronize: true,
         migrationsRun: false,
