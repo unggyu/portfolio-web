@@ -1,18 +1,14 @@
 import { AboutProps } from 'portfolio-web'
-import { Polaroid, MacButtons } from './index'
+import { Polaroid, MacButtons, NewLineText } from './index'
 
 const About = ({
   resumeBasicInfo: {
-    section_name: {
-      about
-    },
+    section_name: { about },
     description_header,
-    description
+    description,
   },
-  sharedBasicInfo: {
-    image
-  },
-  representative_skills: representativeSkills
+  sharedBasicInfo: { image },
+  representative_skills,
 }: AboutProps) => (
   <section id="about">
     <div className="col-md-12">
@@ -23,8 +19,8 @@ const About = ({
         <div className="col-md-4 col-xl-3 mb-5 center">
           <Polaroid
             image_path={image}
-            representative_skills={representativeSkills}
-            style={{ margin: 'auto 10%'}}
+            representative_skills={representative_skills}
+            style={{ margin: 'auto 10%' }}
           />
         </div>
         <div className="col-md-8 col-xl-9 center">
@@ -33,19 +29,12 @@ const About = ({
               <div className="card-header">
                 <MacButtons />
               </div>
-              <div
-                className="card-body font-trebuchet text-justify ml-3 mr-3"
-                style={{
-                  height: 'auto',
-                  fontSize: '132%',
-                  lineHeight: '200%'
-                }}
-              >
+              <div className="card-body card-content font-trebuchet text-justify ml-3 mr-3">
                 <br />
                 <span className="wave">{description_header}</span>
                 <br />
                 <br />
-                {description}
+                <NewLineText text={description} />
               </div>
             </div>
           </div>

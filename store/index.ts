@@ -8,9 +8,13 @@ let store: Store<AppState, AppAction> | undefined
 export const initialState: AppState = {
   resume_data: {
     basic_info: {
-      description_header: '안녕하세요 👋 :)',
-      description:
-        '제 포트폴리오 사이트에 방문에 주셔서 감사합니다. 웹 서비스 개발과 디자인에 관심이 많은 최웅규입니다. 개인 프로젝트로 만들고 싶었던 서비스들을 새로운 기술을 적용하여 만드는 것을 좋아합니다. 2020.01.09부터 IT 산업기능요원으로 편입되었고 현재는 전직 대기 중이며 웹 프론트엔드 개발자로 전향을 준비하고 있습니다. 감사합니다.',
+      description_header: '안녕하세요 👋 ༼ つ ◕_◕ ༽つ',
+      description: `
+        제 포트폴리오 사이트에 방문에 주셔서 감사합니다.\r\n
+        저의 주 사용 언어는 C#이며 이전 직장에서 WPF, UWP 프로그램 개발을 주로 하였습니다.\r\n
+        개인 프로젝트를 진행할 때는 주로 TypeScript + React + Redux 스킬을 사용합니다.\r\n
+        2020.01.09.부터 IT 산업기능요원으로 편입되었고 현재는 전직 대기 중입니다.\r\n
+        감사합니다.`,
       section_name: {
         about: 'About me',
         projects: 'Projects',
