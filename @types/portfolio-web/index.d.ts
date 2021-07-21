@@ -96,6 +96,9 @@ declare module 'portfolio-web' {
     sharedBasicInfo: SharedBasicInfo
     representative_skills: string[]
   }
+  export type NewLineTextProps = {
+    text: string
+  }
   export type CircleProps = {
     color: 'red' | 'yellow' | 'green'
   }
